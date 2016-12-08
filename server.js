@@ -39,8 +39,14 @@ app.use(stylus.middleware(
 //set up static routing to the public directory. This tells Express that any time any requests come in that match up to a file inside of the public directory
 app.use(express.static(__dirname + '/public'));
 
-//Create route for our application
+//Adding route to partials
+app.get('/partials/:partialPath', function(req,res) {
+    //render out anything from the above folder.
+    //When somone requests /partials/main express will render the main.jade file
+    res.render('partials/' + req.params.partialPath)
+})
 
+//Create route for our application
 //Telling the server to handle all requests with a callback to render the index page.
 app.get('*', function(req, res){
     res.render('index');
