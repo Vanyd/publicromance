@@ -1,5 +1,6 @@
 //importing different modules
 var express = require('express'),
+    mongoose = require('mongoose'),
     stylus = require('stylus'),
     logger = require('morgan'),
     bodyParser = require('body-parser');
@@ -38,6 +39,15 @@ app.use(stylus.middleware(
 
 //set up static routing to the public directory. This tells Express that any time any requests come in that match up to a file inside of the public directory
 app.use(express.static(__dirname + '/public'));
+
+//MongoDB Connection
+mongoose.connect('mongodb://localhost/publicromance');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'ERROR: Could not connect to Database'));
+db.once('open', function callback() {
+    console.log('Connected to Database')
+});
+
 
 //Adding route to partials
 app.get('/partials/:partialPath', function(req,res) {
