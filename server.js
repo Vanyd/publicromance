@@ -44,7 +44,7 @@ app.get('/partials/:partialPath', function(req,res) {
     //render out anything from the above folder.
     //When somone requests /partials/main express will render the main.jade file
     res.render('partials/' + req.params.partialPath)
-})
+});
 
 //Create route for our application
 //Telling the server to handle all requests with a callback to render the index page.
