@@ -48,6 +48,15 @@ db.once('open', function callback() {
     console.log('Connected to Database')
 });
 
+//Adding Schema
+var messageSchema = mongoose.Schema({message: String});
+var Message = mongoose.model('Message', messageSchema);
+//create a variable that is going to hold the data that we pull out of the database
+var mongoMessage;
+Message.findOne().exec(function(err, messageDoc) {
+    mongoMessage = messageDoc.message;
+});
+
 
 //Adding route to partials
 app.get('/partials/:partialPath', function(req,res) {
@@ -59,7 +68,7 @@ app.get('/partials/:partialPath', function(req,res) {
 //Create route for our application
 //Telling the server to handle all requests with a callback to render the index page.
 app.get('*', function(req, res){
-    res.render('index');
+    res.render('index', {mongoMessage: mongoMessage});
 });
 
 
