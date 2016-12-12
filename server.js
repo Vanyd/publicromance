@@ -41,11 +41,20 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'));
 
 //MongoDB Connection
-mongoose.connect('mongodb://localhost/publicromance');
+
+//Check which env they are currently in
+if (env === 'development'){
+    mongoose.connect('mongodb://localhost/publicromance');
+} else {
+    mongoose.connect('mongodb://admin:publicromance@ds133418.mlab.com:33418/publicromance');
+}
+
+
+//when connected make db = the coennction
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'ERROR: Could not connect to Database'));
 db.once('open', function callback() {
-    console.log('Connected to Database')
+    console.log('Connected to ' + env + ' Database')
 });
 
 //Adding Schema
@@ -73,6 +82,6 @@ app.get('*', function(req, res){
 
 
 //Seting up our server to listen on a particualr port.
-var port = 3030;
+var port = process.env.PORT || 3030;
 app.listen(port);
 console.log('listening on port ' + port + '....');
