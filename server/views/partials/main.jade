@@ -1,2 +1,11 @@
-h1 This is a Partial
-h2 {{myVar}} 
+.container
+    .jumbotron
+        h1 Public Romance
+        p Welcome to the Public Romance Stock System. This is a test system to design and develop an online Stock management system.
+    .row
+        //including the featured stock file and loading in this column
+        .col-md-6
+            div(ng-include="'/partials/featured-stock'")
+        //including the new-stock file and loading it in here
+        .col-md-6
+            div(ng-include="'/partials/new-stock'")

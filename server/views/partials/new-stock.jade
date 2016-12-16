@@ -1,0 +1,6 @@
+.pnale.panel-primary
+    .panel-heading.text-center New Stock
+.panel-body
+    .row(ng-repeat="stock in testStock | filter: {new:true}")
+        .col-md-9 {{stock.name}}
+        .col.md-3 {{stock.category}}

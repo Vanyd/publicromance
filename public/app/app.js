@@ -1,6 +1,6 @@
 //Defining the app module and provides routing throughout the site.
 
-//define anfular module
+//define angular module
 angular.module('app', ['ngResource', 'ngRoute']);
 
 //defining angular routes and location provider
@@ -10,12 +10,6 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     //route that goes to the root of the domain and define the contoller to handle it.
         .when("/", {
             templateUrl: '/partials/main',
-            controller:'mainCtrl'
+            controller:'mvMainCtrl'
         });
-});
-
-
-//main Controller
-angular.module('app').controller('mainCtrl',function($scope){
-    $scope.myVar = "Hello Angular";
 });

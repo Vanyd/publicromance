@@ -1,0 +1,6 @@
+//Featured stock panel.
+.panel.panel-primary
+    .panel-heading.text-center Featured Stock
+    .panel-body
+        .row(ng-repeat="stock in testStock | filter: {exclusive:true}")
+            .col-md-12 {{stock.name}} | {{stock.category}}
