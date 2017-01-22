@@ -1,5 +1,4 @@
-var passport = require('passport');
-
+var auth = require('./auth');
 
 module.exports = function (app) {
     //Adding route to partials
@@ -10,21 +9,7 @@ module.exports = function (app) {
     });
 
     //Authenticate the user, by grabbing the return value
-    app.post('/login', function (req, res, next) {
-        var auth = passport.authenticate('local', function(err, user){
-            //if error send error
-            if(err) {return next(err);}
-            //if not user, send to client a JSON with false
-            if(!user) {res.send ({success:false})}
-            //login user
-            req.logIn(user, function (err) {
-                if(err) {return next(err);}
-                //suscces JSON send true and the user
-                res.send({success:true, user:user})
-            })
-        });
-        auth(req, res, next);
-    });
+    app.post('/login', auth.authenticate);
 
     //Create route for our application
     //Telling the server to handle all requests with a callback to render the index page.
