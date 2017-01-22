@@ -9,7 +9,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     $routeProvider
     //route that goes to the root of the domain and define the contoller to handle it.
         .when("/", {
-            templateUrl: '/partials/main',
+            templateUrl: '/partials/main/main',
             controller:'mvMainCtrl'
         });
 });
