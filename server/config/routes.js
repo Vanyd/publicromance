@@ -11,6 +11,13 @@ module.exports = function (app) {
     //route to login,
     app.post('/login', auth.authenticate);
 
+    //route to logut
+    app.post('/logout', function(req, res ) {
+        //request to logout, end response
+        req.logout();
+        res.end();
+    });
+
     //Create route for our application
     //Telling the server to handle all requests with a callback to render the index page.
     app.get('*', function(req, res){

@@ -20,6 +20,17 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q) {
             });
             //return promise at end
             return dfd.promise;
+        },
+        //create logout function to logout user
+        logoutUser: function() {
+            var dfd = $q.defer();
+            //posting to server, sending logout proerty to true
+            $http.post('/logout', {logout:true}).then(function() {
+                //set currentUser to undefeined
+                mvIdentity.currentUser = undefined;
+                dfd.resolve();
+            });
+            return dfd.promise
         }
     }
 });

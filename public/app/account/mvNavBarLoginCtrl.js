@@ -1,5 +1,5 @@
 //Controller for Navbar sign in.
-angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, mvIdentity, mvNotification, mvAuth){
+angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, mvIdentity, mvNotification, mvAuth, $location){
 
     //sets identity to mvIdentity, to hide the form
     $scope.identity = mvIdentity;
@@ -16,5 +16,18 @@ angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, mv
                 mvNotification.notify('Username / Password is incorrect');
             }
         })
+    };
+
+    //signout function to signout of the logged in user
+    $scope.signout = function(){
+        //call logoutUser from mvAuth to logout user
+        mvAuth.logoutUser().then(function() {
+            //clear username and password and send notify of logout and send user pack to homepage
+            $scope.username = "";
+            $scope.password = "";
+            mvNotification.notify('You have succesfully signed out!');
+            $location.path('/');
+        })
+
     }
 });
