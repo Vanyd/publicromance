@@ -2,7 +2,8 @@
 //links to mvNavBarLoginCtrl
 //called from index.jade
 .navbar-right(ng-controller="mvNavBarLoginCtrl")
-    form.navbar-form
+    //Hide when user is authenticated.
+    form.navbar-form(ng-hide="identity.isAuthenticated()")
         .form-group
             input.form-control(placeholder="Email", ng-model="username")
         .form-group
