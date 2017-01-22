@@ -8,7 +8,7 @@ module.exports = function (app) {
         res.render('../../public/app/' + req.params[0]);
     });
 
-    //Authenticate the user, by grabbing the return value
+    //route to login,
     app.post('/login', auth.authenticate);
 
     //Create route for our application

@@ -27,8 +27,9 @@ passport.use(new LocalStrategy(
     function(username, password, done){
         //find username in User model from username passport and then exec function
         User.findOne({username:username}).exec(function (err, user) {
-            //throw back user if found, false if user was not found
-            if(user){
+            //checks to see if user exist but is also authenticated
+            //function from user schema
+            if(user && user.authenticate(password)){
                 return done(null, user);
             } else {
                 return done(null, false);
