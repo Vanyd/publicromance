@@ -3,7 +3,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     stylus = require('stylus'),
     cookieParser = require('cookie-parser'),
-    session = require('express-session');
+    session = require('express-session'),
+    passport = require('passport');
 
 //export function to be called upon. server.js throws in app and config.
 
@@ -19,7 +20,7 @@ module.exports = function(app, config){
     app.set('view engine', 'jade');
 
     app.use(cookieParser());
-    app.use(session({secret: 'publicromance test', resave: false, saveUninitialized:false}));
+
     //Adding bodyParser
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
@@ -27,7 +28,11 @@ module.exports = function(app, config){
     //Add Express logging
     app.use(logger('dev'));
 
-    //configuring stylus middleware
+    //session mioddleware
+    app.use(session({secret: 'publicromance test', resave: false, saveUninitialized:false}));
+    app.use(passport.initialize());
+    app.use(passport.session())
+;    //configuring stylus middleware
     app.use(stylus.middleware(
         {
             src: config.rootPath + '/public',

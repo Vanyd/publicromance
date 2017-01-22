@@ -10,7 +10,7 @@ module.exports = function (app) {
     });
 
     //Authenticate the user, by grabbing the return value
-    app.post('/login', function (rep, res, next) {
+    app.post('/login', function (req, res, next) {
         var auth = passport.authenticate('local', function(err, user){
             //if error send error
             if(err) {return next(err);}
