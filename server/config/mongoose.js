@@ -18,7 +18,8 @@ module.exports = function(config) {
         lastName: String,
         username: String,
         salt: String,
-        hashed_pwd: String
+        hashed_pwd: String,
+        roles: [String]
     });
 
     //create authenticate method which checks if password is correct
@@ -35,7 +36,7 @@ module.exports = function(config) {
         var salt, hash;
         salt = createSalt();
         hash = hashPwd(salt, 'test');
-        User.create({firstName: 'test', lastName: 'test', username: 'test', salt: salt, hashed_pwd: hash})
+        User.create({firstName: 'test', lastName: 'test', username: 'test', salt: salt, hashed_pwd: hash, roles: ['admin']})
     }
     })
 };

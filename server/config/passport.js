@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 module.exports = function() {
     //grabbing the User model so passport can auth
-    //Using local-passport rules to auth with User DB username and password. 
+    //Using local-passport rules to auth with User DB username and password.
     passport.use(new LocalStrategy(
         function(username, password, done){
             //find username in User model from username passport and then exec function

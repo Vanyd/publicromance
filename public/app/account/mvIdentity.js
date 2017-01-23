@@ -1,12 +1,14 @@
 /*Store that the user is logged in and hold the current user*/
 //Allow angular to get bootstrap user via window, allowing user to remain after refresh
-angular.module('app').factory('mvIdentity', function($window){
+angular.module('app').factory('mvIdentity', function($window, mvUser){
 
     var currentUser;
     //check if bootstrapped user object is available on the window
     if(!!$window.bootstrappedUserObject) {
-        //if so set currentUser to it
-        currentUser = $window.bootstrappedUserObject;
+        //set current user as new mvUser
+        currentUser = new mvUser;
+        //passing in the bootstraped user into current user
+        angular.extend(currentUser,  $window.bootstrappedUserObject);
     }
 
     return {
