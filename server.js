@@ -18,7 +18,6 @@ require('./server/config/mongoose')(config);
 //Passport
 require('./server/config/passport')();
 
-
 //Routing
 require('./server/config/routes')(app);
 

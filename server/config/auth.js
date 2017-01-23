@@ -17,3 +17,26 @@ exports.authenticate = function (req, res, next) {
     });
     auth(req, res, next);
 };
+
+//function to check if user is authenticated.
+exports.requiresApiLogin = function (req, res, next) {
+    if(!req.isAuthenticated()) {
+        //if not authenticated return status 403
+        res.status(403);
+        res.end();
+    } else{
+        next();
+    }
+};
+
+exports.requiresRole = function (role) {
+    return function (req, res, next) {
+        //check if user is not authenticated and users role
+        if(!req.isAuthenticated() || req.user.roles.indexOf(role) === -1){
+            res.status(403);
+            res.end();
+        } else {
+            next();
+        }
+    }
+}

@@ -1,6 +1,22 @@
-var auth = require('./auth');
+var auth = require('./auth'),
+    mongoose = require('mongoose'),
+    User = mongoose.model('User');
 
 module.exports = function (app) {
+
+
+    //creating RESTful services
+
+
+    //create route to check if user is admin role and then returns a list of all our users .
+    app.get('/api/users', auth.requiresRole('admin'),function (req, res) {
+        //find all users
+        User.find({}).exec(function (err, collection) {
+           //Send back entire User collection in response
+            res.send(collection);
+        })
+    });
+
     //Adding route to partials
     app.get('/partials/*', function(req,res) {
         //render out anything from the above folder.
