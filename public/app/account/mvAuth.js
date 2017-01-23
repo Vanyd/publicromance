@@ -37,6 +37,15 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
                 dfd.resolve();
             });
             return dfd.promise
+        },
+        //check if user is authorized to goto route via role
+        authorizeCurrentUserForRoute: function(role) {
+            if (mvIdentity.isAuthorized(role)) {
+                return true;
+            } else {
+                //reject with message
+                return $q.reject('Not Authorized')
+            }
         }
     }
 });

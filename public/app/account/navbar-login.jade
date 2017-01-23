@@ -10,6 +10,7 @@
             input.form-control(placeholder="Password", type="password", ng-model="password")
             //calls signin from controller
         button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+    //show when user is authenticated
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
         li.dropdown
             a.dropdown-toggle(href="", data-toggle="dropdown")
@@ -18,6 +19,6 @@
             ul.dropdown-menu
                 //checks current user to see if admin.
                 li(ng-show="identity.currentUser.isAdmin()")
-                    a(href="/admin/user") User Admin
+                    a(href="/admin/users") User Admin
                 li
                     a(href="",ng-click="signout()") Sign Out

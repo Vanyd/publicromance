@@ -36,7 +36,8 @@ module.exports = function(config) {
         var salt, hash;
         salt = createSalt();
         hash = hashPwd(salt, 'test');
-        User.create({firstName: 'test', lastName: 'test', username: 'test', salt: salt, hashed_pwd: hash, roles: ['admin']})
+        User.create({firstName: 'test', lastName: 'test', username: 'test', salt: salt, hashed_pwd: hash, roles: ['admin']}),
+        User.create({firstName: 'test', lastName: 'test', username: 'test1', salt: salt, hashed_pwd: hash, roles: []})
     }
     })
 };

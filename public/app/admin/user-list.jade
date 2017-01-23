@@ -1,0 +1,5 @@
+.container
+    table.table
+        //checking $scope.users from controller, repeat each as a new row
+        tr(ng-repeat="user in users")
+            td {{user.firstName + ' ' + user.lastName}}

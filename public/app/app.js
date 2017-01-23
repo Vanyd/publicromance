@@ -5,11 +5,43 @@ angular.module('app', ['ngResource', 'ngRoute']);
 
 //defining angular routes and location provider
 angular.module('app').config(function ($routeProvider, $locationProvider) {
+
+    //Check role for Authorization
+    var routeRoleChecks = {
+
+        admin: {auth: function (mvAuth) {
+                return mvAuth.authorizeCurrentUserForRoute('admin')
+            }}
+        };
+
+
     $locationProvider.html5Mode(true);
     $routeProvider
     //route that goes to the root of the domain and define the contoller to handle it.
         .when("/", {
             templateUrl: '/partials/main/main',
             controller:'mvMainCtrl'
+        })
+        //created route for admin users page and added new controller
+        .when("/admin/users", {
+            templateUrl: '/partials/admin/user-list',
+            controller:'mvUserListCtrl',
+            //resolve to check is user authorized for page
+            resolve: routeRoleChecks.admin
         });
+});
+
+//runs section of app module. excuted after the module been completely configured.
+//rootScope to listen to route change error events
+//location serivce to redirect
+angular.module('app').run(function ($rootScope, $location) {
+    //turn rootScope on and listen for routeChangeError,
+    $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
+        //listens for 'Not Authorized error code
+        if(rejection === 'Not Authorized')
+        {
+            //redirects path back to homepage
+            $location.path('/');
+        }
+    })
 });
