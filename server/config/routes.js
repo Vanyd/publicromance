@@ -21,7 +21,10 @@ module.exports = function (app) {
     //Create route for our application
     //Telling the server to handle all requests with a callback to render the index page.
     app.get('*', function(req, res){
-        res.render('index');
+        res.render('index', {
+            //Bootstrap user to allow angular get current user via layout / mvIdentity
+            bootstrappedUser: req.user
+        });
     });
 
 };

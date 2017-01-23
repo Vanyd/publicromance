@@ -39,6 +39,7 @@ passport.use(new LocalStrategy(
     }
 ));
 
+
 //serializeUser determines, which data of the user object should be stored in the session.
 passport.serializeUser(function(user, done){
     if(user){
