@@ -3,7 +3,7 @@
 angular.module('app').factory('mvIdentity', function($window, mvUser){
 
     var currentUser;
-    //check if bootstrapped user object is available on the window
+    //check if bootstrapped user object is available on the window -
     if(!!$window.bootstrappedUserObject) {
         //set current user as new mvUser
         currentUser = new mvUser;

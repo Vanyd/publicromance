@@ -28,6 +28,10 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             controller:'mvUserListCtrl',
             //resolve to check is user authorized for page
             resolve: routeRoleChecks.admin
+        })
+        .when("/signup", {
+            templateUrl: '/partials/account/signup',
+            controller:'mvSignupCtrl'
         });
 });
 

@@ -13,7 +13,7 @@ angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, mv
                 //if success send message via mvNotification
                 mvNotification.notify('You have successfully signed in!');
             } else {
-                mvNotification.notify('Username / Password is incorrect');
+                mvNotification.error('Username / Password is incorrect');
             }
         })
     };
