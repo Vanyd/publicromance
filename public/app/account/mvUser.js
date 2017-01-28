@@ -1,7 +1,7 @@
 //Determing a Users Role. Gets called upon from mvIdentity and mvAuth
 
 angular.module('app').factory('mvUser', function ($resource) {
-    //Accessing users api
+    //The `ngResource` module provides interaction support with RESTful services via the $resource service.
     var UserResource = $resource('/api/users/:id', {_id: "@id"});
 
     //method to tell whether user is admin

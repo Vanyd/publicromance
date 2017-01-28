@@ -12,10 +12,10 @@ angular.module('app').controller('mvSignupCtrl', function ($scope, mvUser, mvNot
 
         //Pass in the new user data created from the signup form into a mvAuth function createUser
         mvAuth.createUser(newUserData).then(function() {
-            mvNotifier.notify('User account created!');
+            mvNotification.notify('User account created!');
             $location.path('/');
         }, function(reason){
-            mvNotifier.error(reason);
+            mvNotification.error(reason);
         })
 
 

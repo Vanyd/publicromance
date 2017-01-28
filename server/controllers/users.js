@@ -15,24 +15,30 @@ exports.getUsers = function (req, res) {
 
 exports.createUser = function(req, res, next){
 
-    //grabbing data posted to the user
+    //Assigning userdata from User Data.
     var userData = req.body;
 
-
+    //change to lower case, to remove duplicate loads
     userData.username = userData.username.toLowerCase();
+
+    //Create a salt from the password
     userData.salt = encrypt.createSalt();
+
+    //hash the password with the salty
     userData.hashed_pwd = encrypt.hashPwd(userData.salt, userData.password);
-    //create user in database through mongoose
+
+    //create user,
     User.create(userData, function(err, user){
         if(err){
-
-            //E11000 internal mongoDB error code for duplicate
+            //Check for duplicates, MongoDB error message for duplicate is E11000
             if(err.toString().indexOf('E11000') > -1) {
                 err = new Error('Duplicate Username');
             }
             res.status(400);
             return res.send({reason:err.toString()});
         }
+
+        //No error then log in the user.
         req.logIn(user, function(err){
             if(err) {return next(err);
             }

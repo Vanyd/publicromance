@@ -29,17 +29,18 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
         },
 
         //create a new user. resource object.
-        createUser: function (newUserData) {
-          var newUser = new mvUser(newUserData);
-          var dfd = $q.defer();
-          //When new user is saved, then set current user as new user.
-          newUser.$save().then(function () {
-              mvIdentity.currentUser = newUser;
-              dfd.resolve();
-          }, function (response) {
-              dfd.reject(response.data.reason);
-          });
-          return dfd.promise;
+        createUser: function(newUserData){
+            var newUser = new mvUser(newUserData);
+            var dfd = $q.defer();
+
+            //
+            newUser.$save().then(function() {
+                mvIdentity.currentUser = newUser;
+                dfd.resolve();
+            }, function(response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
         },
 
 

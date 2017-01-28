@@ -12,7 +12,7 @@ module.exports = function(config) {
         console.log('Connected to ' + config.name + ' Database')
     });
 
-    userModel.createDefaultUsers();
+
 
 };
 
