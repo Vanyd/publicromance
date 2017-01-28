@@ -2,6 +2,8 @@
 
 angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser) {
     return {
+
+        //authenticate user against the inputted username and password.
         authenticateUser: function(username, password) {
             //create deferred for q to login
             var dfd =$q.defer();
@@ -33,7 +35,7 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
             var newUser = new mvUser(newUserData);
             var dfd = $q.defer();
 
-            //
+            //save the new user data against the current user
             newUser.$save().then(function() {
                 mvIdentity.currentUser = newUser;
                 dfd.resolve();
@@ -43,11 +45,25 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
             return dfd.promise;
         },
 
+        //update the CurrentUser settings
+        updateCurrentUser: function (newUserData){
 
+            var dfd = $q.defer();
 
+            //Creating a clone of the current user, using the angular copy method
+            var clone = angular.copy(mvIdentity.currentUser);
+            //Copy the newUserData onto the clone
+            angular.extend(clone, newUserData);
 
-
-
+            //update taken from our UserResource from mvUser
+            clone.$update().then(function () {
+                mvIdentity.currentUser = clone;
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
 
         //create logout function to logout user
         logoutUser: function() {
@@ -60,12 +76,23 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
             });
             return dfd.promise
         },
-        //check if user is authorized to goto route via role
+        //check if user is authorized to ga certain role
         authorizeCurrentUserForRoute: function(role) {
             if (mvIdentity.isAuthorized(role)) {
                 return true;
             } else {
-                //reject with message
+                //reject with message if user is not part of the role
+                return $q.reject('Not Authorized')
+            }
+        },
+
+
+
+        //Check if user is authenticated
+        authorizeAuthenticateUserForRoute: function () {
+            if(mvIdentity.isAuthenticated()){
+                return true;
+            } else {
                 return $q.reject('Not Authorized')
             }
         }

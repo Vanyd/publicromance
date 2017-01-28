@@ -15,6 +15,9 @@ module.exports = function (app) {
     //create route to create user.
     app.post('/api/users', users.createUser);
 
+    //create route to update the user
+    app.put('/api/users', users.updateUser);
+
     //Adding route to partials
     app.get('/partials/*', function(req,res) {
         //render out anything from the above folder.

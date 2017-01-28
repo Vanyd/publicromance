@@ -1,5 +1,8 @@
+//User model, holds all information for the User Collection within Mongo
+//Contains User schema Methods
+
 var mongoose = require('mongoose'),
-    encreypt = require('../utilities/encryption');
+    encrypt = require('../utilities/encryption');
 
 
 //Schema for the user
@@ -16,11 +19,18 @@ var userSchema = mongoose.Schema({
     roles: [String]
 });
 
-//create authenticate method which checks if password is correct
+//User schema methods
 userSchema.methods ={
+    //create authenticate method which checks if password is correct
     authenticate: function (passwordToMatch) {
+        //comparing salt of password to match is equaled to hash
         return encrypt.hashPwd(this.salt, passwordToMatch) === this.hashed_pwd;
+    },
+    //Check users Role
+    hasRole: function (role) {
+        return this.roles.indexOf(role) >-1;
     }
 };
 
- var User = mongoose.model('User', userSchema);
+//
+var User = mongoose.model('User', userSchema);

@@ -8,9 +8,13 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
 
     //Check role for Authorization
     var routeRoleChecks = {
-
+        //checks for admin
         admin: {auth: function (mvAuth) {
                 return mvAuth.authorizeCurrentUserForRoute('admin')
+            }},
+        //checks if
+        user: {auth: function (mvAuth) {
+                return mvAuth.authorizeAuthenticateUserForRoute()
             }}
         };
 
@@ -29,6 +33,13 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             //resolve to check is user authorized for page
             resolve: routeRoleChecks.admin
         })
+        //create route for profile page
+        .when("/profile", {
+            templateUrl: '/partials/account/profile',
+            controller:'mvProfileCtrl',
+            resolve: routeRoleChecks.user
+        })
+        //create route for signup page
         .when("/signup", {
             templateUrl: '/partials/account/signup',
             controller:'mvSignupCtrl'
