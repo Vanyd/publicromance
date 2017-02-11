@@ -1,29 +1,38 @@
-//Navbar login component. Username / Password and login button.
-//links to mvNavBarLoginCtrl
-//called from index.jade
-.navbar-right(ng-controller="mvNavBarLoginCtrl")
-    //Hide when user is authenticated.
-    form.navbar-form(ng-hide="identity.isAuthenticated()")
-        ul.nav.navbar-nav
-            li
-                a(href="/signup") Sign Up
-        .form-group
-            input.form-control(placeholder="Email", ng-model="username")
-        .form-group
-            input.form-control(placeholder="Password", type="password", ng-model="password")
-            //calls signin from controller
-        button.btn.btn-primary(ng-click="signin(username, password)") Sign In
-    //show when user is authenticated
-    ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
-        li.dropdown
-            a.dropdown-toggle(href="", data-toggle="dropdown")
-                | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
-                b.caret
-            ul.dropdown-menu
-                //checks current user to see if admin.
-                li(ng-show="identity.currentUser.isAdmin()")
-                    a(href="/admin/users") User Admin
+.navbar.navbar-inverse.navbar-fixed-top(ng-controller="mvNavBarLoginCtrl")
+    .container
+        .navbar-header
+            a.navbar-brand(href="/") Public Romance
+                h6 -Stock Management
+        .navbar-collapse.collapse
+            ul.nav.navbar-nav
                 li
-                    a(href="/profile") Profile
-                li
-                    a(href="",ng-click="signout()") Sign Out
+                    a(href="/") Home
+                li(ng-show="identity.isAuthenticated()")
+                    a(href="/stock") Stock
+
+            .navbar-right
+                //Hide when user is authenticated.
+                form.navbar-form(ng-hide="identity.isAuthenticated()")
+                    ul.nav.navbar-nav
+                        li
+                            a(href="/signup") Sign Up
+                    .form-group
+                        input.form-control(placeholder="Email", ng-model="username")
+                    .form-group
+                        input.form-control(placeholder="Password", type="password", ng-model="password")
+                        //calls signin from controller
+                    button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+                //show when user is authenticated
+                ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+                    li.dropdown
+                        a.dropdown-toggle(href="", data-toggle="dropdown")
+                            | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+                            b.caret
+                        ul.dropdown-menu
+                            //checks current user to see if admin.
+                            li(ng-show="identity.currentUser.isAdmin()")
+                                a(href="/admin/users") User Admin
+                            li
+                                a(href="/profile") Profile
+                            li
+                                a(href="",ng-click="signout()") Sign Out

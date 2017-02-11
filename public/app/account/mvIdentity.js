@@ -15,7 +15,9 @@ angular.module('app').factory('mvIdentity', function($window, mvUser){
         currentUser: currentUser,
         //adding method to check if authenticated, so can check at any time if we have a logged in user
         isAuthenticated: function () {
-            return !!this.currentUser;
+            var isAuthenticated = !!this.currentUser;
+            console.log("isAuth: " + isAuthenticated);
+            return isAuthenticated;
         },
         //check current user role to see if they have it
         isAuthorized: function(role){

@@ -35,6 +35,12 @@ module.exports = function (app) {
         res.end();
     });
 
+    //route to respond with 404 when getting a out of bound API route
+    //route that responds to all verbs not juget GET
+    app.all('/api/*', function(req, res){
+        res.send(404)
+    });
+
     //Create route for our application
     //Telling the server to handle all requests with a callback to render the index page.
     app.get('*', function(req, res){

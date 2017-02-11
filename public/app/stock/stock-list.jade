@@ -1,0 +1,13 @@
+//stock list data table view page.
+.container
+    table.table.table-hover.table-striped.table-condensed
+        thead
+            tr
+                //Columns
+                th Column1
+                th Column 2
+        tbody
+            //Row
+            tr(ng-repeat="stock in stockes")
+                td {{stock.title}}
+                td {{stock.category}}
