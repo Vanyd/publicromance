@@ -1,5 +1,6 @@
 var auth = require('./auth'),
     users = require('../controllers/users'),
+    products = require('../controllers/products'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
@@ -17,6 +18,9 @@ module.exports = function (app) {
 
     //create route to update the user
     app.put('/api/users', users.updateUser);
+
+    //route to get stock list
+    app.get('/api/stock', products.getProducts);
 
     //Adding route to partials
     app.get('/partials/*', function(req,res) {
@@ -38,7 +42,7 @@ module.exports = function (app) {
     //route to respond with 404 when getting a out of bound API route
     //route that responds to all verbs not juget GET
     app.all('/api/*', function(req, res){
-        res.send(404)
+        res.sendStatus(404)
     });
 
     //Create route for our application

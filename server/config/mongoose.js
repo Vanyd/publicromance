@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    userModel = require('../models/User');
+    userModel = require('../models/User'),
+    productModel = require('../models/Product');
 
 module.exports = function(config) {
 
@@ -12,7 +13,7 @@ module.exports = function(config) {
         console.log('Connected to ' + config.name + ' Database')
     });
 
-
+    productModel.createDefaultProducts();
 
 };
 

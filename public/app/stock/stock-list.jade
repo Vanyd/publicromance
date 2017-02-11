@@ -4,10 +4,10 @@
         thead
             tr
                 //Columns
-                th Column1
-                th Column 2
+                th Product Name
+                th Category
         tbody
             //Row
-            tr(ng-repeat="stock in stockes")
-                td {{stock.title}}
-                td {{stock.category}}
+            tr(ng-repeat="product in products")
+                td {{product.name}}
+                td {{product.category}}
