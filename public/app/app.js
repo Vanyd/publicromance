@@ -38,10 +38,16 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: '/partials/account/profile',
             controller:'mvProfileCtrl',
             resolve: routeRoleChecks.user
-        })//create route for stock page
+        })
+        //create route for stock page
         .when("/stock", {
             templateUrl: '/partials/stock/stock-list',
             controller:'mvStockListCtrl'
+        })
+        //create route for indvidual stock items, placing the route as the id
+        .when("/stock/:id", {
+            templateUrl: '/partials/stock/stock-details',
+            controller:'mvStockDetailsCtrl'
         })
         //create route for signup page
         .when("/signup", {

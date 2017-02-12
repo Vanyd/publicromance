@@ -1,0 +1,14 @@
+//Indvidual Stock Item list, Controler is mvStockDetailsCtrl
+.container
+    h1 {{product.name}}
+    .row
+        .col-md-6
+            h3(ng-show="product.isVintage") Vintage stock
+            h3 Description:
+            h4 {{product.description}}
+
+        .col-md-6
+            .panel.panel-primary
+                .panel-heading Tags
+                .panel-body
+                    div(ng-repeat="tag in product.tags") {{tag}}
