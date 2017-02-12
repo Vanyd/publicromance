@@ -1,6 +1,6 @@
 .pnale.panel-primary
-    .panel-heading.text-center New Stock
+    .panel-heading.text-center Vintage Stock
 .panel-body
-    .row(ng-repeat="stock in testStock | filter: {new:true}")
-        .col-md-9 {{stock.name}}
-        .col.md-3 {{stock.category}}
+    .row(ng-repeat="product in products | filter: {isVintage:true}")
+        .col-md-9 {{product.name}}
+        .col.md-3 {{product.category}}
