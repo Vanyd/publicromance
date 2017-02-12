@@ -9,3 +9,10 @@ exports.getProducts = function(req, res){
         res.send(collection);
     })
 };
+
+//Get Product by Id and return one
+exports.getProductById = function (req, res){
+    Product.findOne({_id:req.params.id}).exec(function (err, product) {
+        res.send(product);
+    })
+};

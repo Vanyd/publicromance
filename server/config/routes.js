@@ -22,6 +22,9 @@ module.exports = function (app) {
     //route to get stock list
     app.get('/api/stock', products.getProducts);
 
+    //rotue to get indvidual product id page
+    app.get('/api/stock/:id', products.getProductById);
+
     //Adding route to partials
     app.get('/partials/*', function(req,res) {
         //render out anything from the above folder.
