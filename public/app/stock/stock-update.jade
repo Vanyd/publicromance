@@ -1,0 +1,44 @@
+//Adding new stock item
+.container
+    .well
+        //giving the form a name to access it from Controller
+        form.form-horizontal(name="addStockForm")
+            fieldset
+                legend Add new Stock Item
+                .form-group
+                    label.col-md-2.control-label(for="name") Product Name
+                    .col-md-10
+                        input.form-control(name="name", type="text", placeholder="Product Name", required, ng-model="name")
+                .form-group
+                    label.col-md-2.control-label(for="description") Description
+                    .col-md-10
+                        input.form-control(name="description", type="text", placeholder="Description", required, ng-model="description")
+                .form-group
+                    label.col-md-2.control-label(for="tags") Tags
+                    .col-md-10
+                        input.form-control(name="tags", type="text", placeholder="Tags", ng-model="tags")
+                .form-group
+                    label.col-md-2.control-label(for="category") Category
+                    .col-md-10
+                        input.form-control(name="category", type="text", placeholder="Category", required, ng-model="category")
+                .form-group
+                    label.col-md-2.control-label(for="isVintage") Vintage
+                    .col-md-1
+                        input.form-control(name="vintage", type="checkbox", ng-model="isVintage")
+                    label.col-md-2.control-label(for="isAccessory") Accessory
+                    .col-md-1
+                        input.form-control(name="accessory", type="checkbox", ng-model="isAccessory")
+                .form-group
+                    label.col-md-2.control-label(for="quantity") Quantity
+                    .col-md-10
+                        input.form-control(name="price", type="number", min="0", required, ng-model="price")
+                .form-group
+                    label.col-md-2.control-label(for="price") Price
+                    .col-md-10
+                        input.form-control(name="price", type="number", min="0.01", step="0.01",  required, ng-model="price")
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="update()", ng-disabled="signupForm.$invalid") Submit
+                            | &nbsp &nbsp;
+                            a.btn(href="/stock") Cancel

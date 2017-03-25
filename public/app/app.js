@@ -42,12 +42,26 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         //create route for stock page
         .when("/stock", {
             templateUrl: '/partials/stock/stock-list',
-            controller:'mvStockListCtrl'
+            controller:'mvStockListCtrl',
+            resolve: routeRoleChecks.admin
         })
         //create route for indvidual stock items, placing the route as the id
-        .when("/stock/:id", {
+        .when("/stock/item/:id", {
             templateUrl: '/partials/stock/stock-details',
-            controller:'mvStockDetailsCtrl'
+            controller:'mvStockDetailsCtrl',
+            resolve: routeRoleChecks.admin
+        })
+        //create route for adding stock items
+        .when("/stock/add", {
+            templateUrl: '/partials/stock/stock-add',
+            controller:'mvStockAddCtrl',
+            resolve: routeRoleChecks.admin
+        })
+        //create route for adding stock items
+        .when("/stock/update/:id", {
+            templateUrl: '/partials/stock/stock-update',
+            controller:'mvStockUpdateCtrl',
+            resolve: routeRoleChecks.admin
         })
         //create route for signup page
         .when("/signup", {

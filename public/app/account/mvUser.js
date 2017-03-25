@@ -3,7 +3,7 @@
 angular.module('app').factory('mvUser', function ($resource) {
     //The `ngResource` module provides interaction support with RESTful services via the $resource service.
     var UserResource = $resource('/api/users/:id', {_id: "@id"}, {
-        //Adding in update parameter, that will use the PUT method and expect a single obnject
+        //Adding in update parameter, that will use the PUT method and expect a single object
         update: {method: 'PUT', isArray:false}
     });
 

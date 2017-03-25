@@ -1,6 +1,6 @@
 //Auth controller for the user, login/create/logout/auth role
 
-angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser) {
+angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser, mvProduct) {
     return {
 
         //authenticate user against the inputted username and password.
@@ -38,6 +38,20 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
             //save the new user data against the current user
             newUser.$save().then(function() {
                 mvIdentity.currentUser = newUser;
+                dfd.resolve();
+            }, function(response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
+
+        //create a new Product. resource object.
+        createProduct: function(newProductData){
+            var newProduct = new mvProduct(newProductData);
+            var dfd = $q.defer();
+
+            //save the new user data against the current user
+            newProduct.$save().then(function() {
                 dfd.resolve();
             }, function(response) {
                 dfd.reject(response.data.reason);
