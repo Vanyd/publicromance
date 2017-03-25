@@ -63,6 +63,12 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             controller:'mvStockUpdateCtrl',
             resolve: routeRoleChecks.admin
         })
+        //create route for adding stock items
+        .when("/stock/update", {
+            templateUrl: '/partials/stock/stock-update',
+            controller:'mvStockUpdateCtrl',
+            resolve: routeRoleChecks.admin
+        })
         //create route for signup page
         .when("/signup", {
             templateUrl: '/partials/account/signup',
