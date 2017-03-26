@@ -25,6 +25,12 @@ module.exports = function (app) {
     //rotue to get indvidual product id page
     app.get('/api/stock/:id', products.getProductById);
 
+    //rotue to get indvidual product id page
+    app.post('/api/stock', products.createProduct);
+
+    //route to update item by 1
+    //app.put('/api/stock', products.addQuantityProduct);
+
     //Adding route to partials
     app.get('/partials/*', function(req,res) {
         //render out anything from the above folder.

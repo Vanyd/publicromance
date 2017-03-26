@@ -12,7 +12,7 @@ exports.getUsers = function (req, res) {
     })
 };
 
-//Create user
+//exports function so routes.js can use
 
 exports.createUser = function(req, res, next){
 

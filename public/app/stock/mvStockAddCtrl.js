@@ -1,9 +1,10 @@
-angular.module('app').controller('mvStockAddCtrl', function ($scope, mvProduct, mvNotification, mvAuth, $location) {
+angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotification, mvAuth, $location) {
 
     $scope.addstock = function() {
         var newProductData = {
-            name: $scope.email,
+            name: $scope.name,
             description: $scope.description,
+            //TODO Fix tags so it goes inot an array
             tags: $scope.tags,
             category: $scope.category,
             isVintage: $scope.isVintage,
@@ -13,7 +14,6 @@ angular.module('app').controller('mvStockAddCtrl', function ($scope, mvProduct, 
         };
 
         //Pass in the new user data created from the signup form into a mvAuth function createUser
-        //TODO createProduct function in mvAuth
         mvAuth.createProduct(newProductData).then(function() {
             mvNotification.notify('Stock Item Created');
             $location.path('/stock');

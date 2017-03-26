@@ -2,21 +2,24 @@
 .container
     .well
         //giving the form a name to access it from Controller
-        form.form-horizontal(name="addStockForm")
+        form.form-horizontal(name="updateStockForm")
             fieldset
                 legend Alter Stock Item
                 .form-group
                     label.col-md-2.control-label(for="name") Product Name
                     .col-md-10
-                        input.form-control(name="name", type="text", placeholder="Product Name", required, ng-model="name")
+                        input.form-control(name="name", type="text", required, ng-model="name")
                 .form-group
                     label.col-md-2.control-label(for="description") Description
                     .col-md-10
-                        input.form-control(name="description", type="text", placeholder="Description", required, ng-model="description")
+                        input.form-control(name="description", type="text", required, ng-model="description")
                 .form-group
                     label.col-md-2.control-label(for="tags") Tags
                     .col-md-10
-                        input.form-control(name="tags", type="text", placeholder="Tags", ng-model="tags")
+                        input.form-control(name="tags", type="text", ng-model="tags" disabled)
+                    .col-md-10
+                        //TODO Add in Tag Array functionality
+                        p Tags currently not working
                 .form-group
                     label.col-md-2.control-label(for="category") Category
                     .col-md-10
@@ -41,4 +44,6 @@
                         .pull-right
                             button.btn.btn-primary(ng-click="update()", ng-disabled="signupForm.$invalid") Submit
                             | &nbsp &nbsp;
-                            a.btn(href="/stock") Cancel
+                            button.btn.btn-primary(ng-click="qwerty()") test
+                            | &nbsp &nbsp;
+                            a.btn(href="/stock/item/{{product._id}}") Cancel

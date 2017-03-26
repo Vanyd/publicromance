@@ -59,6 +59,92 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser,
             return dfd.promise;
         },
 
+        addQuantityProduct: function(newProductData){
+
+            //
+            // var dfd = $q.defer();
+            //
+            // $http.post('/stock/')
+            //
+            //
+            // authenticateUser: function(username, password) {
+            //     //create deferred for q to login
+            //     var dfd =$q.defer();
+            //     //post to /login route with username and password
+            //     $http.post('/login', {username:username, password:password}).then(function(response){
+            //         //check success response
+            //         if(response.data.success){
+            //
+            //             //create mvUser dependency
+            //             var user = new mvUser();
+            //             //passing  in the user
+            //             angular.extend(user, response.data.user);
+            //
+            //             //changing currentUser identity
+            //             mvIdentity.currentUser = user;
+            //             //resolving deferred when loggedin
+            //             dfd.resolve(true);
+            //         } else {
+            //             //return false when unsuccesful login
+            //             dfd.resolve(false);
+            //         }
+            //     });
+            //     //return promise at end
+            //     return dfd.promise;
+            // },
+            //
+            //
+            //
+            // var dfd = $q.defer();
+            //
+            // var clone = angular.copy((mvProduct));
+            // angular.extend(clone, newProductData);
+            //
+            // clone.$update().then(function () {
+            //     mvProduct = clone;
+            //     dfd.resolve();
+            // }, function (response) {
+            //     dfd.reject(response.data.reason);
+            // });
+            // return dfd.promise;
+
+            //
+            // var newProduct = new mvProduct(newProductData);
+            // var dfd = $q.defer();
+            //
+            // //save the new user data against the current user
+            // newProduct.$save().then(function() {
+            //     dfd.resolve();
+            // }, function(response) {
+            //     dfd.reject(response.data.reason);
+            // });
+            // return dfd.promise;
+
+
+        },
+
+        //update the CurrentUser settings
+        updateProduct: function (newUserData){
+
+
+            mvProduct.get({_id:$routeParams.id});
+            var dfd = $q.defer();
+
+            //Creating a clone of the current user, using the angular copy method
+            var clone = angular.copy(mvProduct);
+            //Copy the newUserData onto the clone
+            angular.extend(clone, newUserData);
+
+            //update taken from our UserResource from mvUser
+            clone.$update().then(function () {
+                mvProduct = clone;
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
+
         //update the CurrentUser settings
         updateCurrentUser: function (newUserData){
 
