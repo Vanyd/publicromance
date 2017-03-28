@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Vanyd/publicromance#readme",
   "dependencies": {
+    "angular-chart.js": "^1.1.1",
     "body-parser": "^1.15.2",
     "chart.js": "^2.5.0",
     "consolidate": "^0.14.5",
