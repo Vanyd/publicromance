@@ -7,8 +7,20 @@
             ul.nav.navbar-nav
                 li
                     a(href="/") Home
-                li(ng-show="identity.isAuthenticated()")
+                li(ng-show="identity.currentUser.isAdmin()")
                     a(href="/stock") Stock
+                li.dropdown(ng-show="identity.currentUser.isAdmin()")
+                    a.dropdown-toggle(href="", data-toggle="dropdown")
+                        | Reports
+                        b.caret
+                    ul.dropdown-menu
+                        //checks current user to see if admin.
+                        li
+                            a(href="/report/daily") Daily Report
+                        li
+                            a(href="/report/weekly") Weekly Report
+                        li
+                            a(href="/report/monthly") Monthly Report
 
             .navbar-right
                 //Hide when user is authenticated.

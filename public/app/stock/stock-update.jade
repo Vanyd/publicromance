@@ -6,9 +6,9 @@
             fieldset
                 legend Alter Stock Item
                 .form-group
-                    label.col-md-2.control-label(for="name") Product Name
+                    label.col-md-2.control-label(for="tname") Product Name
                     .col-md-10
-                        input.form-control(name="name", type="text", required, ng-model="name")
+                        input.form-control(name="tname", type="text", required, ng-model="tname")
                 .form-group
                     label.col-md-2.control-label(for="description") Description
                     .col-md-10
@@ -43,7 +43,5 @@
                     .col-md-10.col-md-offset-2
                         .pull-right
                             button.btn.btn-primary(ng-click="update()", ng-disabled="signupForm.$invalid") Submit
-                            | &nbsp &nbsp;
-                            button.btn.btn-primary(ng-click="qwerty()") test
                             | &nbsp &nbsp;
                             a.btn(href="/stock/item/{{product._id}}") Cancel

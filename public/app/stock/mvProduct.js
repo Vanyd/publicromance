@@ -9,5 +9,4 @@ angular.module('app').factory('mvProduct', function ($resource) {
 
     return ProductResource;
 
-
 });

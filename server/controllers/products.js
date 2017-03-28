@@ -45,45 +45,48 @@ exports.createProduct = function(req, res, next){
             res.send(user);
         })
     });
-
-
-//Update quantity by 1
-
-    exports.addQuantityProduct = function (req, res) {
-
-        var productUpdate = req.body;
-
-
-        // req.product.quantity = productUpdate.quantity;
-        //
-        // req.product.save(function (err) {
-        //
-        //     if (err) {
-        //         //callback to check for an error
-        //         res.status(400);
-        //         //sending back reason of error
-        //         return res.send({reason: err.toString()});
-        //     }
-        //
-        //     //send back current user, where angular will update the resource obeject
-        //     res.send(req.product);
-        //
-        // });
-
-
-
-        Product.findOne({_id:productUpdate._id}).exec(function (err, product) {
-            productUpdate.quantity ++;
-
-            Product.update({"_id":productUpdate._id},{$set: {"quantity": productUpdate.quantity}})
-        });
-
-        Product.find({}).exec(function (err, collection) {
-            res.send(collection);
-        })
-
-
-    };
+//
+//
+// //Update quantity by 1
+//
+//     exports.updateProduct = function (req, res) {
+//
+//         var productUpdate = req.body;
+//
+//
+//         // req.product.quantity = productUpdate.quantity;
+//         //
+//         // req.product.save(function (err) {
+//         //
+//         //     if (err) {
+//         //         //callback to check for an error
+//         //         res.status(400);
+//         //         //sending back reason of error
+//         //         return res.send({reason: err.toString()});
+//         //     }
+//         //
+//         //     //send back current user, where angular will update the resource obeject
+//
+//         //
+//         // });
+//
+//
+//
+//         Product.findOne({_id:productUpdate._id}).exec(function (err, product) {
+//             if(err){
+//                 res.status(400);
+//                 return res.send({reason:err.toString()});
+//             }
+//             console.log(product);
+//             product.quantity ++;
+//             console.log(product);
+//
+//             Product.update({"_id":product._id},{$set: {"quantity": product.quantity}})
+//         });
+//
+//         res.send({success:true});
+//
+//     };
 
 
 

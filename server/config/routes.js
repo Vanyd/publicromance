@@ -28,8 +28,8 @@ module.exports = function (app) {
     //rotue to get indvidual product id page
     app.post('/api/stock', products.createProduct);
 
-    //route to update item by 1
-    //app.put('/api/stock', products.addQuantityProduct);
+    //route to update item
+    //app.put('/api/stock', products.updateProduct);
 
     //Adding route to partials
     app.get('/partials/*', function(req,res) {
