@@ -3,7 +3,12 @@ angular.module('app').controller('mvStockUpdateCtrl',  function($scope, mvAuth, 
 
     //TODO need to figure out how to create a new mv product and feed data in.
 
-    $scope.product = mvProduct.get({_id:$routeParams.id});
+    $scope.product = mvProduct.get({_id:$routeParams.id}).exec(function ()
+    {
+        var test
+
+
+    });
 
 
     $scope.pname = "test";
