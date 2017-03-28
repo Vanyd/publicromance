@@ -8,39 +8,39 @@ angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, 
 
     //setting sortOrder to default to first sortOption
     $scope.sortOrder = $scope.sortOptions[0].value;
-    //
-    // $scope.addQuantity = function(productData) {
-    //
-    //     alert(productData);
-    //
-    //     //
-    //     // mvAuth.addQuantityProduct(productData).then(function() {
-    //     //     mvNotification.notify('Stock Item Created');
-    //     //     $location.path('/stock');
-    //     // }, function(reason){
-    //     //     mvNotification.error(reason);
-    //     // })
-    //
-    //
-    // };
-    //
-    // $scope.removeQuantity = function(productID) {
-    //
-    //    // alert(productID);
-    //
-    //     var currentProductID = {
-    //       _id: productID
-    //     };
-    //
-    //     mvAuth.removeQuantityProduct(currentProductID).then(function() {
-    //         mvNotification.notify('User account created!');
-    //         $location.path('/');
-    //     }, function(reason){
-    //         mvNotification.error(reason);
-    //     })
-    //
-    //
-    //
-    // }
+
+    $scope.addQuantity = function(productData) {
+
+        productData.quantity ++;
+
+        //
+        // mvAuth.addQuantityProduct(productData).then(function() {
+        //     mvNotification.notify('Stock Item Created');
+        //     $location.path('/stock');
+        // }, function(reason){
+        //     mvNotification.error(reason);
+        // })
+
+
+    };
+
+    $scope.removeQuantity = function(productData) {
+
+       // alert(productID);
+
+        productData.quantity --;
+
+
+
+        // mvAuth.removeQuantityProduct(currentProductID).then(function() {
+        //     mvNotification.notify('User account created!');
+        //     $location.path('/');
+        // }, function(reason){
+        //     mvNotification.error(reason);
+        // })
+
+
+
+    }
 
 });

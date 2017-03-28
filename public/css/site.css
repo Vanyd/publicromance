@@ -1,12 +1,16 @@
 body {
   padding-top: 50px;
 }
+.navbar.navbar {
+  background: #ff9e9d;
+}
 .navbar-header a.navbar-brand {
+  color: #d43f3a;
   margin-top: -15px;
   margin-bottom: -20px;
 }
 .navbar-header a.navbar-brand h6 {
-  color: #ccc;
+  color: #d43f3a;
 }
 footer {
   padding-left: 15px;

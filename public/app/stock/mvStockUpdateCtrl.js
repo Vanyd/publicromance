@@ -1,36 +1,22 @@
 //Controler for the Profile page.
 angular.module('app').controller('mvStockUpdateCtrl',  function($scope, mvAuth, mvProduct, mvNotification, $routeParams){
 
-    //TODO need to figure out how to create a new mv product and feed dat a in.
+    //TODO need to figure out how to create a new mv product and feed data in.
 
     $scope.product = mvProduct.get({_id:$routeParams.id});
 
-    $scope.readtest = $scope.product.name;
 
-    $scope.test = function (){
-        $scope.tname= $scope.product.name;
-        $scope.description = $scope.product.description;
-        $scope.tags = $scope.product.tags;
-        $scope.category = $scope.product.category;
-        $scope.isVintage = $scope.product.isVintage;
-        $scope.isAccessory = $scope.product.isAccessory;
-        $scope.price = $scope.product.price;
-        $scope.quantity = $scope.product.quantity;
-
-        console.log($scope.product);
-
-        console.log($scope.product.name);
-
-        console.log($scope.readtest);
-    };
-
-    $timeout($scope.test());
-
+    $scope.pname = "test";
+    $scope.pd = $scope.product.description;
+    $scope.pc = $scope.product.category;
+    $scope.vin = $scope.product.isVintage;
+    $scope.acc = $scope.product.isAccessory;
+    $scope.cost = $scope.product.price;
+    $scope.quan = $scope.product.quantity;
 
 
     $scope.update = function() {
 
-        $scope.tname = $scope.product.name;
 
     // var newProductData ={
     //     name : $scope.product.name,
@@ -45,7 +31,8 @@ angular.module('app').controller('mvStockUpdateCtrl',  function($scope, mvAuth, 
 
     console.log($scope.product);
     console.log($scope.product.name);
-    console.log($scope.readtest);
+    console.log($scope.pname);
+    console.log($scope.pd);
 
     // //Update user details and send notifaction
     // mvAuth.updateCurrentUser(newProductData).then(function(){
