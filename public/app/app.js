@@ -72,8 +72,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         //create route for adding stock items
         .when("/report/daily", {
             templateUrl: '/partials/report/daily-report',
-            controller:'mvReportDailyCtrl',
-            resolve: routeRoleChecks.admin
+            controller:'mvReportDailyCtrl'
         })
         //create route for adding stock items
         .when("/report/weekly", {

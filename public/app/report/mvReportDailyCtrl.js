@@ -30,14 +30,33 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
         return obj.quantity;
     });
 
+    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+    $scope.options = {
+        scales: {
+            yAxes: [
+                {
+                    id: 'y-axis-1',
+                    type: 'linear',
+                    display: true,
+                    position: 'left'
+                },
+                {
+                    id: 'y-axis-2',
+                    type: 'linear',
+                    display: true,
+                    position: 'right'
+                }
+            ]
+        }
+    };
+
     $scope.test = function() {
 
 
-        $scope.quantityArray = $scope.dateArray.map(function (obj) {
-            return obj.quantity;
-        });
 
-        console.log($scope.quantityArray);
+
+        console.log($scope.labels.length);
+        console.log($scope.data.length);
 
 
     };

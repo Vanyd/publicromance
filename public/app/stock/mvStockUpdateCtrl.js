@@ -5,6 +5,17 @@ angular.module('app').controller('mvStockUpdateCtrl', function ($scope, mvAuth, 
 
     $scope.product = mvProduct.get({_id: $routeParams.id});
 
+    $scope.deleteProduct = function () {
+        var x;
+        if (confirm("Are you sure you want to delete" + $scope.product.name) == true) {
+            //TODO Colum to add RESTFUL APIS
+            x = "You pressed OK!";
+        } else {
+            $location.path('/stock/item/' + $scope.product._id);
+        }
+
+    };
+
 
     $scope.update = function () {
 

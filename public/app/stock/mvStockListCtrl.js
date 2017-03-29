@@ -24,6 +24,7 @@ angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, 
 
     };
 
+
     $scope.removeQuantity = function(productData) {
 
        // alert(productID);

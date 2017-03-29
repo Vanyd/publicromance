@@ -23,6 +23,7 @@
                 th Category
                 th Quantity
                 th Update Quantity
+                th Edit Item
         tbody
             //Row in the table repeat from products, add filter and order
             tr(ng-repeat="product in products | filter:searchText | orderBy:sortOrder")
@@ -35,6 +36,9 @@
                 td
                     button(ng-click="addQuantity(product)") +
                     button(ng-click="removeQuantity(product)") -
+                td
+                    a(href="/stock/update/{{product._id}}")
+                        span(class='glyphicon glyphicon-edit')
     .col-md-10.col-md-offset-2
         .pull-right
             //TODO button brings to add new item page

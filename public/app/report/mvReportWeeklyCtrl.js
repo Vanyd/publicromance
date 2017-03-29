@@ -31,6 +31,26 @@ angular.module('app').controller('mvReportWeeklyCtrl', function ($scope, mvRepor
         return obj.quantity;
     });
 
+    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+    $scope.options = {
+        scales: {
+            yAxes: [
+                {
+                    id: 'y-axis-1',
+                    type: 'linear',
+                    display: true,
+                    position: 'left'
+                },
+                {
+                    id: 'y-axis-2',
+                    type: 'linear',
+                    display: true,
+                    position: 'right'
+                }
+            ]
+        }
+    };
+
     $scope.test = function() {
 
 
