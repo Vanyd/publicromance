@@ -73,6 +73,8 @@ exports.updateUser = function (req, res) {
         req.user.hashed_pwd = encrypt.hashPwd(req.user.salt, userUpdates.password)
     }
 
+    console.log(req);
+
     //update to the database via save in mongoose
     req.user.save(function (err) {
 
@@ -87,9 +89,6 @@ exports.updateUser = function (req, res) {
         res.send(req.user);
 
     });
-
-
-
 
 
 };

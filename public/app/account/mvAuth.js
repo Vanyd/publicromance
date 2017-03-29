@@ -61,20 +61,15 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser,
 
 
         //update the CurrentUser settings
-        updateProduct: function (newUserData){
+        updateProduct: function (updateProductData){
 
-
-            mvProduct.get({_id:$routeParams.id});
             var dfd = $q.defer();
 
-            //Creating a clone of the current user, using the angular copy method
-            var clone = angular.copy(mvProduct);
-            //Copy the newUserData onto the clone
-            angular.extend(clone, newUserData);
+            var updateProduct = new mvProduct(updateProductData);
 
-            //update taken from our UserResource from mvUser
-            clone.$update().then(function () {
-                mvProduct = clone;
+
+            //update taken from our UserResource from mvProduct
+            updateProduct.$update().then(function () {
                 dfd.resolve();
             }, function (response) {
                 dfd.reject(response.data.reason);

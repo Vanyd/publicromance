@@ -1,1 +1,77 @@
-<!--Adding new stock item--><div class="container"><div class="well"><!--giving the form a name to access it from Controller--><form name="updateStockForm" class="form-horizontal"><fieldset><legend>Alter Stock Item</legend><div class="form-group"><label for="pname" class="col-md-2 control-label">Product Name</label><div class="col-md-10"><input name="pname" type="text" required="required" ng-model="pname" class="form-control"/></div></div><div class="form-group"><label for="pd" class="col-md-2 control-label">Description</label><div class="col-md-10"><input name="pd" type="text" required="required" ng-model="pd" class="form-control"/></div></div><div class="form-group"><label for="pc" class="col-md-2 control-label">Category</label><div class="col-md-10"><input name="pc" type="text" required="required" ng-model="pc" class="form-control"/></div></div><div class="form-group"><label for="vin" class="col-md-2 control-label">Vintage</label><div class="col-md-1"><input name="vin" type="checkbox" ng-model="vin" class="form-control"/></div><label for="acc" class="col-md-2 control-label">Accessory</label><div class="col-md-1"><input name="acc" type="checkbox" ng-model="acc" class="form-control"/></div></div><div class="form-group"><label for="quan" class="col-md-2 control-label">Quantity</label><div class="col-md-10"><input name="price" type="number" min="0" required="required" ng-model="quan" class="form-control"/></div></div><div class="form-group"><label for="cost" class="col-md-2 control-label">Price</label><div class="col-md-10"><input name="cost" type="number" min="0.01" step="0.01" required="required" ng-model="cost" class="form-control"/></div></div><div class="form-group"><div class="col-md-10 col-md-offset-2"><div class="pull-right"><button ng-click="update()" class="btn btn-primary">Submit</button>&nbsp &nbsp;<a href="/stock/item/{{product._id}}" class="btn">Cancel</a></div></div></div></fieldset></form></div></div>
+<!--Adding new stock item-->
+<div class="container">
+    <div class="well"><!--giving the form a name to access it from Controller-->
+        <form name="updateStockForm"
+              class="form-horizontal">
+            <fieldset>
+                <legend>Alter Stock Item</legend>
+                <div class="form-group"><label for="pname"
+                                               class="col-md-2 control-label">Product Name</label>
+                    <div class="col-md-10"><input name="pname"
+                                                  type="text"
+                                                  required="required"
+                                                  ng-model="pname"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="pd"
+                                               class="col-md-2 control-label">Description</label>
+                    <div class="col-md-10"><input name="pd"
+                                                  type="text"
+                                                  required="required"
+                                                  ng-model="product.pd"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="pc"
+                                               class="col-md-2 control-label">Category</label>
+                    <div class="col-md-10"><input name="pc"
+                                                  type="text"
+                                                  required="required"
+                                                  ng-model="pc"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="vin"
+                                               class="col-md-2 control-label">Vintage</label>
+                    <div class="col-md-1"><input name="vin"
+                                                 type="checkbox"
+                                                 ng-model="vin"
+                                                 class="form-control"/></div>
+                    <label for="acc"
+                           class="col-md-2 control-label">Accessory</label>
+                    <div class="col-md-1"><input name="acc"
+                                                 type="checkbox"
+                                                 ng-model="acc"
+                                                 class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="quan"
+                                               class="col-md-2 control-label">Quantity</label>
+                    <div class="col-md-10"><input name="price"
+                                                  type="number"
+                                                  min="0"
+                                                  required="required"
+                                                  ng-model="quan"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="cost"
+                                               class="col-md-2 control-label">Price</label>
+                    <div class="col-md-10"><input name="cost"
+                                                  type="number"
+                                                  min="0.01"
+                                                  step="0.01"
+                                                  required="required"
+                                                  ng-model="cost"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()"
+                                    class="btn btn-primary">Submit
+                            </button>
+                            &nbsp &nbsp;<a href="/stock/item/{{product._id}}"
+                                           class="btn">Cancel</a></div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

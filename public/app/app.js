@@ -1,7 +1,7 @@
 //Defining the app module and provides routing throughout the site.
 
 //define angular module
-angular.module('app', ['ngResource', 'ngRoute']);
+angular.module('app', ['ngResource', 'ngRoute', 'chart.js']);
 
 //defining angular routes and location provider
 angular.module('app').config(function ($routeProvider, $locationProvider) {
