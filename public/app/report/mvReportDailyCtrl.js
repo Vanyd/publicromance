@@ -1,25 +1,45 @@
 
 angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport) {
 
-    $scope.report = mvReport.query();
+    $scope.report = mvReport;
 
-    // var log =[];
-    //
-    // angular.forEach(report, function(value, key){
-    //     this.push(key + ': ' + value);
-    // }, log);
-    //
-    // console.log(log);
 
-    $scope.intro = "Hello Daily";
+    //Adds all name objects into one array
+    $scope.nameArray =  $scope.report.map(function(obj) {
+        return obj.name;
+    });
+    //filters to unique names and places them as a label in the chart
+    $scope.labels = $scope.nameArray.filter(function(item, pos, self) {
+        return self.indexOf(item) == pos;
+    });
 
-    $scope.labels = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7'];
 
-    $scope.series = ['Start', 'End'];
+    //Filters Objects from last 24 hours and places them in a array
+    $scope.dateArray = $scope.report.filter(function (obj) {
 
-    $scope.data = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
+        var currentDate = new Date();
+        var ONE_DAY = 86400000 * 2;
+        var difference = currentDate.getTime()-ONE_DAY;
+
+        return obj.date.getTime() >= difference ;
+
+    });
+
+    //filters quantity and places them in data array
+    $scope.data = $scope.dateArray.map(function (obj) {
+        return obj.quantity;
+    });
+
+    $scope.test = function() {
+
+
+        $scope.quantityArray = $scope.dateArray.map(function (obj) {
+            return obj.quantity;
+        });
+
+        console.log($scope.quantityArray);
+
+
+    };
 });
 
