@@ -2,16 +2,19 @@ body {
   padding-top: 50px;
 }
 .navbar-header a.navbar-brand {
+  color: #00b3ee;
   margin-top: -15px;
   margin-bottom: -20px;
 }
 .navbar-header a.navbar-brand h6 {
-  color: #ccc;
+  color: #d43f3a;
 }
+.dropdown-menu,
 footer {
   padding-left: 15px;
   padding-right: 15px;
 }
+.dropdown-menu p,
 footer p {
   border-top: 1px solid #d7e0e2;
 }
@@ -30,8 +33,17 @@ footer p {
 .table {
   margin-top: 15px;
 }
-.well {
+.well.report {
   margin-top: 40px;
+}
+.jumbotron.main {
+  margin-top: 10px;
+}
+.panel.panel-primary.accessory {
+  margin-top: 10px;
+}
+.panel.panel-primary.vintage {
+  margin-top: 10px;
 }
 .top-padding-med {
   padding-top: 10px;

@@ -1,7 +1,7 @@
 //Defining the app module and provides routing throughout the site.
 
 //define angular module
-angular.module('app', ['ngResource', 'ngRoute']);
+angular.module('app', ['ngResource', 'ngRoute', 'chart.js']);
 
 //defining angular routes and location provider
 angular.module('app').config(function ($routeProvider, $locationProvider) {
@@ -67,6 +67,23 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         .when("/stock/update", {
             templateUrl: '/partials/stock/stock-update',
             controller:'mvStockUpdateCtrl',
+            resolve: routeRoleChecks.admin
+        })
+        //create route for adding stock items
+        .when("/report/daily", {
+            templateUrl: '/partials/report/daily-report',
+            controller:'mvReportDailyCtrl'
+        })
+        //create route for adding stock items
+        .when("/report/weekly", {
+            templateUrl: '/partials/report/weekly-report',
+            controller:'mvReportWeeklyCtrl',
+            resolve: routeRoleChecks.admin
+        })
+        //create route for adding stock items
+        .when("/report/monthly", {
+            templateUrl: '/partials/report/monthly-report',
+            controller:'mvReportMonthlyCtrl',
             resolve: routeRoleChecks.admin
         })
         //create route for signup page

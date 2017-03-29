@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     userModel = require('../models/User'),
+    reportModel = require('../models/Report'),
     productModel = require('../models/Product');
 
 module.exports = function(config) {
@@ -14,6 +15,8 @@ module.exports = function(config) {
     });
 
     productModel.createDefaultProducts();
+
+    reportModel.createDefaultReport();
 
 };
 

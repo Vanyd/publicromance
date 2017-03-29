@@ -59,6 +59,24 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser,
             return dfd.promise;
         },
 
+
+        //update the CurrentUser settings
+        updateProduct: function (updateProductData){
+
+            var dfd = $q.defer();
+
+            var updateProduct = new mvProduct(updateProductData);
+
+
+            //update taken from our UserResource from mvProduct
+            updateProduct.$update().then(function () {
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
+
         //update the CurrentUser settings
         updateCurrentUser: function (newUserData){
 
