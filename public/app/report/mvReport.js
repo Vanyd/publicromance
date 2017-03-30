@@ -4,16 +4,6 @@ angular.module('app').factory('mvReport', function () {
 
     //Similar to the mvUser we use the resource to grab the stock items
     var ReportResource = [
-        { name : "Black Contrast Elastic Waist Faux Leather Leggings", quantity : 45, date : new Date('2017-02-16') },
-        { name : "Black Contrast Elastic Waist Faux Leather Leggings", quantity : 5, date : new Date('2017-01-18') },
-        { name : "White V Neck Drop Shoulder Sweater", quantity : 27, date : new Date('2017-02-7') },
-        { name : "Silver Elastic Fabric Chunky Heel Short Boots", quantity : 1, date : new Date('2017-02-13') },
-        { name : "Green Army Jacket", quantity : 3, date : new Date('2017-01-8') },
-        { name : "Green Army Jacket", quantity : 17, date : new Date('2017-03-8') },
-        { name : "Plaid Back Zipper Pleated Skirt", quantity : 14, date : new Date('2017-01-27') },
-        { name : "Green Army Jacket", quantity : 31, date : new Date('2017-03-15') },
-        { name : "Item 18", quantity : 34, date : new Date('2017-01-8') },
-        { name : "Black Plaid Keyhole Front Bell Sleeve Dress", quantity : 30, date : new Date('2017-03-4') },
         { name : "Black Plaid Keyhole Front Bell Sleeve Dress", quantity : 4, date : new Date('2017-01-14') },
         { name : "Adidas Navy Bomber Jacket", quantity : 24, date : new Date('2017-02-14') },
         { name : "Black Ripped Drawstring Sweatpants", quantity : 29, date : new Date('2017-02-23') },
