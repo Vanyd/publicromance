@@ -18,7 +18,7 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
     $scope.dateArray = $scope.report.filter(function (obj) {
 
         var currentDate = new Date();
-        var ONE_DAY = 86400000 * 2;
+        var ONE_DAY = 86400000 * 4;
         var difference = currentDate.getTime()-ONE_DAY;
 
         return obj.date.getTime() >= difference ;

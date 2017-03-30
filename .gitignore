@@ -1,3 +1,4 @@
 .idea
 node_modules
-angular-chart.js
+/public/vendor/chart.js/
+/public/vendor/angular-chart.js/

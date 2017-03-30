@@ -2,12 +2,9 @@ body {
   padding-top: 50px;
 }
 .navbar-header a.navbar-brand {
-  color: #00b3ee;
   margin-top: -15px;
   margin-bottom: -20px;
-}
-.navbar-header a.navbar-brand h6 {
-  color: #d43f3a;
+h6
 }
 .dropdown-menu,
 footer {
