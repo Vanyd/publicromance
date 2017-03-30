@@ -1,30 +1,35 @@
 //Controler for the Profile page.
-angular.module('app').controller('mvStockUpdateCtrl',  function($scope, mvAuth, mvProduct, mvNotification){
-    //get data on the current user
-    $scope.email = mvIdentity.currentUser.username;
-    $scope.fname = mvIdentity.currentUser.firstName;
-    $scope.lname = mvIdentity.currentUser.lastName;
+angular.module('app').controller('mvStockUpdateCtrl', function ($scope, mvAuth, mvProduct, mvNotification, $routeParams, $location) {
 
-    //update function
+    //TODO need to figure out how to create a new mv product and feed data in.
 
-    $scope.update = function() {
-        var newUserData ={
-            username: $scope.email,
-            firstName: $scope.fname,
-            lastName: $scope.lname
-        };
+    $scope.product = mvProduct.get({_id: $routeParams.id});
 
-        //check if user has set a new password, if so then set new password
-        if($scope.password && $scope.password.length > 0){
-            newUserData.password = $scope.password;
+    $scope.deleteProduct = function () {
+        var x;
+        if (confirm("Are you sure you want to delete" + $scope.product.name) == true) {
+            //TODO Colum to add RESTFUL APIS
+            x = "You pressed OK!";
+        } else {
+            $location.path('/stock/item/' + $scope.product._id);
         }
 
+    };
+
+
+    $scope.update = function () {
+
+
+        console.log($scope.product);
+
         //Update user details and send notifaction
-        mvAuth.updateCurrentUser(newUserData).then(function(){
-            mvNotification.notify('Your account has been updated');
-        }, function(reason){
+        mvAuth.updateProduct($scope.product).then(function () {
+            mvNotification.notify($scope.product.name + ' has been updated');
+            $location.path('/stock/item/' + $scope.product._id);
+        }, function (reason) {
             mvNotification.error(reason);
-        })
+        });
+
 
     }
 

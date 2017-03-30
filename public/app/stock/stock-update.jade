@@ -2,43 +2,39 @@
 .container
     .well
         //giving the form a name to access it from Controller
-        form.form-horizontal(name="addStockForm")
+        form.form-horizontal(name="updateStockForm")
             fieldset
                 legend Alter Stock Item
                 .form-group
-                    label.col-md-2.control-label(for="name") Product Name
+                    label.col-md-2.control-label(for="pname") Product Name
                     .col-md-10
-                        input.form-control(name="name", type="text", placeholder="Product Name", required, ng-model="name")
+                        input.form-control(name="pname", type="text", required, ng-model="product.name")
                 .form-group
-                    label.col-md-2.control-label(for="description") Description
+                    label.col-md-2.control-label(for="pd") Description
                     .col-md-10
-                        input.form-control(name="description", type="text", placeholder="Description", required, ng-model="description")
+                        input.form-control(name="pd", type="text", required, ng-model="product.description")
                 .form-group
-                    label.col-md-2.control-label(for="tags") Tags
+                    label.col-md-2.control-label(for="pc") Category
                     .col-md-10
-                        input.form-control(name="tags", type="text", placeholder="Tags", ng-model="tags")
+                        input.form-control(name="pc", type="text", required, ng-model="product.category")
                 .form-group
-                    label.col-md-2.control-label(for="category") Category
-                    .col-md-10
-                        input.form-control(name="category", type="text", placeholder="Category", required, ng-model="category")
-                .form-group
-                    label.col-md-2.control-label(for="isVintage") Vintage
+                    label.col-md-2.control-label(for="vin") Vintage
                     .col-md-1
-                        input.form-control(name="vintage", type="checkbox", ng-model="isVintage")
-                    label.col-md-2.control-label(for="isAccessory") Accessory
+                        input.form-control(name="vin", type="checkbox", ng-model="product.isVintage")
+                    label.col-md-2.control-label(for="acc") Accessory
                     .col-md-1
-                        input.form-control(name="accessory", type="checkbox", ng-model="isAccessory")
+                        input.form-control(name="acc", type="checkbox", ng-model="product.isAccessory")
                 .form-group
-                    label.col-md-2.control-label(for="quantity") Quantity
+                    label.col-md-2.control-label(for="quan") Quantity
                     .col-md-10
-                        input.form-control(name="price", type="number", min="0", required, ng-model="price")
+                        input.form-control(name="price", type="number", min="0", required, ng-model="product.quantity")
                 .form-group
-                    label.col-md-2.control-label(for="price") Price
+                    label.col-md-2.control-label(for="cost") Price
                     .col-md-10
-                        input.form-control(name="price", type="number", min="0.01", step="0.01",  required, ng-model="price")
+                        input.form-control(name="cost", type="text", min="0.01", step="0.01",  required, ng-model="product.price")
                 .form-group
                     .col-md-10.col-md-offset-2
                         .pull-right
-                            button.btn.btn-primary(ng-click="update()", ng-disabled="signupForm.$invalid") Submit
-                            | &nbsp &nbsp;
-                            a.btn(href="/stock") Cancel
+                            button.btn.btn-primary(ng-click="update()") Submit
+                            | | &nbsp &nbsp;
+                            a.btn(href="/stock/item/{{product._id}}") Cancel

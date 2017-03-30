@@ -1,6 +1,7 @@
 var auth = require('./auth'),
     users = require('../controllers/users'),
     products = require('../controllers/products'),
+    reports = require('../controllers/reports'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
@@ -24,6 +25,16 @@ module.exports = function (app) {
 
     //rotue to get indvidual product id page
     app.get('/api/stock/:id', products.getProductById);
+
+    //rotue to get indvidual product id page
+    app.post('/api/stock', products.createProduct);
+
+    //route to update item
+    app.put('/api/stock', products.updateProduct);
+
+    //route to get reports
+    app.get('/api/report', reports.getReports);
+
 
     //Adding route to partials
     app.get('/partials/*', function(req,res) {
