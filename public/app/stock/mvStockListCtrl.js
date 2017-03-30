@@ -1,4 +1,4 @@
-angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, mvAuth, $location) {
+ angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, mvAuth, $location, mvNotification) {
    //Get list of Stock items to use for data table from the mvCachedProduct Resouce
     $scope.products = mvProduct.query();
 
@@ -13,13 +13,14 @@ angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, 
 
         productData.quantity ++;
 
-        //
-        // mvAuth.addQuantityProduct(productData).then(function() {
-        //     mvNotification.notify('Stock Item Created');
-        //     $location.path('/stock');
-        // }, function(reason){
-        //     mvNotification.error(reason);
-        // })
+        mvAuth.updateProduct(productData).then(function () {
+            mvNotification.notify(productData.name + ' has been updated');
+            $location.path('/stock/item/' + $scope.product._id);
+        }, function (reason) {
+            mvNotification.error(reason);
+            productData.quantity --;
+        });
+
 
 
     };
@@ -33,12 +34,14 @@ angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, 
 
 
 
-        // mvAuth.removeQuantityProduct(currentProductID).then(function() {
-        //     mvNotification.notify('User account created!');
-        //     $location.path('/');
-        // }, function(reason){
-        //     mvNotification.error(reason);
-        // })
+        mvAuth.updateProduct(productData).then(function () {
+            mvNotification.notify(productData.name + ' has been updated');
+            $location.path('/stock/item/' + $scope.product._id);
+        }, function (reason) {
+            mvNotification.error(reason);
+            productData.quantity ++;
+        });
+
 
 
 
