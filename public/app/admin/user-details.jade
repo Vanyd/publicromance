@@ -1,0 +1,31 @@
+.container
+    .well
+        //giving the form a name to access it from Controller
+        form.form-horizontal(name="userDetailsForm")
+            fieldset
+                legend {{user.firstName}} {{user.lastName}} User Information
+                .form-group
+                    label.col-md-2.control-label(for="email") Email
+                    .col-md-10
+                        input.form-control(name="email", type="email", placeholder="Email", ng-disabled="!editMode", ng-model="user.username")
+                .form-group
+                    label.col-md-2.control-label(for="password") Password
+                    .col-md-10
+                        input.form-control(name="password", type="password", placeholder="Password", ng-disabled="!editMode", ng-model="password")
+                .form-group
+                    label.col-md-2.control-label(for="fname") First Name
+                    .col-md-10
+                        input.form-control(name="fname", type="text", placeholder="First Name", ng-disabled="!editMode", ng-model="user.firstName")
+                .form-group
+                    label.col-md-2.control-label(for="lname") Last Name
+                    .col-md-10
+                        input.form-control(name="lname", type="text", placeholder="Last Name", ng-disabled="!editMode", ng-model="user.lastName")
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            //If signup form is invalid, button is disabled
+                            button.btn.btn-primary(ng-click="editUser()", ng-hide="editMode") Edit
+                            button.btn.btn-primary(ng-click="saveUser()", ng-show="editMode") Save
+                            button.btn.btn-primary(ng-click="cancelUser()", ng-show="editMode") Cancel
+                            | &nbsp &nbsp;
+                            a.btn(href="/") Back

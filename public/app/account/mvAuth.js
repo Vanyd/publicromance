@@ -59,6 +59,19 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser,
             return dfd.promise;
         },
 
+        //delete Product. resource object.
+        deleteProduct: function(newProductData){
+            var newProduct = new mvProduct(newProductData);
+            var dfd = $q.defer();
+
+            //save the new user data against the current user
+            newProduct.$delete().then(function() {
+                dfd.resolve();
+            }, function(response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
 
         //update the CurrentUser settings
         updateProduct: function (updateProductData){
@@ -70,6 +83,23 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser,
 
             //update taken from our UserResource from mvProduct
             updateProduct.$update().then(function () {
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
+
+        //update the CurrentUser settings
+        updateUser: function (updateUserData){
+
+            var dfd = $q.defer();
+
+            var updateUser = new mvUser(updateUserData);
+
+
+            //update taken from our UserResource from mvProduct
+            updateUser.$update().then(function () {
                 dfd.resolve();
             }, function (response) {
                 dfd.reject(response.data.reason);

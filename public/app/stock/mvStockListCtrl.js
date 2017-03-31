@@ -15,7 +15,6 @@
 
         mvAuth.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
-            $location.path('/stock/item/' + $scope.product._id);
         }, function (reason) {
             mvNotification.error(reason);
             productData.quantity --;
@@ -36,7 +35,6 @@
 
         mvAuth.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
-            $location.path('/stock/item/' + $scope.product._id);
         }, function (reason) {
             mvNotification.error(reason);
             productData.quantity ++;

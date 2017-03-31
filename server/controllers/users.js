@@ -12,6 +12,15 @@ exports.getUsers = function (req, res) {
     })
 };
 
+//Get User by Id and return one
+exports.getUserById = function (req, res) {
+    console.log(req.params.id);
+    User.findOne({_id: req.params.id}).exec(function (err, user) {
+        res.send(user);
+        console.log(user);
+    })
+};
+
 //exports function so routes.js can use
 
 exports.createUser = function(req, res, next){

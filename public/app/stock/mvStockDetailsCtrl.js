@@ -1,5 +1,5 @@
 //rotueparams required to get the ID for the Product from the URL
-angular.module('app').controller('mvStockDetailsCtrl', function ($scope, mvProduct, $routeParams) {
+angular.module('app').controller('mvStockDetailsCtrl', function ($scope, mvProduct, $routeParams, $location, mvAuth, mvNotification) {
 
     //Calling get on the Resoruce and passing in and id which is received by the routeParams
     //routeparams id is taken from app.js rooute
@@ -8,12 +8,20 @@ angular.module('app').controller('mvStockDetailsCtrl', function ($scope, mvProdu
 
 
     $scope.deleteProduct = function () {
-        var x;
+
         if (confirm("Are you sure you want to delete " + $scope.product.name) == true) {
-            //TODO Colum to add RESTFUL APIS
+            //TODO fix Delete -- currently does not remove record.
+            //Update user details and send notifaction
+            mvAuth.deleteProduct($scope.product).then(function () {
+                mvNotification.notify($scope.product.name + ' has been deleted');
+                $location.path('/stock/');
+            }, function (reason) {
+                mvNotification.error(reason);
+            });
 
         } else {
             $location.path('/stock/item/' + $scope.product._id);
+            console.log($scope.product);
         }
 
     };

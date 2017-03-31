@@ -26,11 +26,17 @@ module.exports = function (app) {
     //rotue to get indvidual product id page
     app.get('/api/stock/:id', products.getProductById);
 
+    //rotue to get indvidual user id page
+    app.get('/api/users/:id', users.getUserById);
+
     //rotue to get indvidual product id page
     app.post('/api/stock', products.createProduct);
 
     //route to update item
     app.put('/api/stock', products.updateProduct);
+
+    //route to update item
+    app.delete('/api/stock', products.deleteProduct);
 
     //route to get reports
     app.get('/api/report', reports.getReports);

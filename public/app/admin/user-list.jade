@@ -1,5 +1,10 @@
 .container
-    table.table
-        //checking $scope.users from controller, repeat each as a new row
-        tr(ng-repeat="user in users")
-            td {{user.firstName + ' ' + user.lastName}}
+    table.table.table-hover.table-striped.table-condensed
+        thead
+            tr
+                //Columns
+                th Product Name
+        tbody
+            tr(ng-repeat="user in users")
+                td
+                    a(href="/admin/users/{{user._id}}") {{user.firstName + ' ' + user.lastName}}

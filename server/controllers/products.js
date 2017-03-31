@@ -60,4 +60,30 @@ exports.updateProduct = function (req, res) {
     })
 
 
+
+
+};
+
+
+exports.deleteProduct = function (req, res) {
+
+
+//update to the database via save in mongoose
+
+    console.log(req.body);
+
+    Product.remove({"_id": req.body._id}, function(err){
+        if (!err) {
+            res.send(req.body);
+            console.log('no error;');
+        }
+        else {
+            res.send(req.body);
+            console.log('error');
+        }
+    })
+
+
+
+
 };
