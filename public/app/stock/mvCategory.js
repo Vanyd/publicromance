@@ -3,9 +3,8 @@
 angular.module('app').factory('mvCategory', function ($resource) {
 
     //Similar to the mvUser we use the resource to grab the stock items
-    var CategoryResource = $resource('/api/category/:_id',{_id:"@id"},{
-        update: {method:'PUT', isArray:false},
-        remove: {method:'DELETE'}
+    var CategoryResource = $resource('/api/category/:_id',{},{
+        update: {method:'PUT', isArray:false}
     });
 
     return CategoryResource;

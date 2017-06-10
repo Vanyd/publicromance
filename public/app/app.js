@@ -83,14 +83,12 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         //create route for adding stock items
         .when("/report/weekly", {
             templateUrl: '/partials/report/weekly-report',
-            controller:'mvReportWeeklyCtrl',
-            resolve: routeRoleChecks.admin
+            controller:'mvReportWeeklyCtrl'
         })
         //create route for adding stock items
         .when("/report/monthly", {
             templateUrl: '/partials/report/monthly-report',
-            controller:'mvReportMonthlyCtrl',
-            resolve: routeRoleChecks.admin
+            controller:'mvReportMonthlyCtrl'
         })
         //create route for signup page
         .when("/signup", {

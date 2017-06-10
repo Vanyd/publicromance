@@ -14,7 +14,6 @@ var productSchema = mongoose.Schema({
     isVintage: {type:Boolean},
     isAccessory: {type:Boolean},
     costprice: {type:String},
-
     retailprice: {type:String},
     //Add image
     image: {type:String},

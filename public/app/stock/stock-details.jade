@@ -6,17 +6,29 @@
 .container.top-padding-med
     h1 {{product.name}}
     .row
-        .col-md-6
-            h3(ng-show="product.isVintage") Vintage stock
-            h3(ng-show="product.isAccessory") Accessory stock
+        .col-md-5
             h3 Description:
             h4 {{product.description}}
 
-        .col-md-6
+        .col-md-3
+            .panel.panel-primary
+                .panel-heading Details
+                .panel-body
+                    b Quantity
+                    p Store Quantity: {{product.quantity.store}}
+                    p Warehouse Qauntity: {{product.quantity.warehouse}}
+                    b Price
+                    p Cost Price: {{product.costprice | currency:'€'}}
+                    p Retail Price: {{product.retailprice | currency:'€'}}
+                    b Info
+                    p Category: {{product.category}}
+                    p Vintage Stock: {{product.isVintage}}
+                    p Accessory Stock: {{product.isAccessory}}
+        .col-md-4
             .panel.panel-primary
                 .panel-heading Picture
                 .panel-body
-                    div(ng-repeat="tag in product.tags") {{tag}}
+
     .form-group
         .col-md-10.col-md-offset-2
             .pull-right

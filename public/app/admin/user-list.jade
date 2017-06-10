@@ -4,7 +4,15 @@
             tr
                 //Columns
                 th Product Name
+                th Role
+                th Add Admin
+                th Remove Admin
         tbody
             tr(ng-repeat="user in users")
                 td
                     a(href="/admin/users/{{user._id}}") {{user.firstName + ' ' + user.lastName}}
+                td {{user.roles}}
+                td
+                    button(ng-click="addAdmin(user)") +
+                td
+                    button(ng-click="removeAdmin(user)") -

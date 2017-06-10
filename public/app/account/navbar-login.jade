@@ -9,7 +9,7 @@
                     a(href="/") Home
                 li(ng-show="identity.currentUser.isAdmin()")
                     a(href="/stock") Stock
-                li.dropdown(ng-show="identity.currentUser.isAdmin()")
+                li.dropdown(ng-show="identity.isAuthenticated()")
                     a.dropdown-toggle(href="", data-toggle="dropdown")
                         | Reports
                         b.caret
