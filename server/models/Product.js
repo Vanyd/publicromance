@@ -10,16 +10,14 @@ var productSchema = mongoose.Schema({
     description: {type:String},
     //changed tag to size
     size: {type:String},
-    //Add category
     category:{type:String},
     isVintage: {type:Boolean},
     isAccessory: {type:Boolean},
     costprice: {type:String},
-    //add retail price
+
     retailprice: {type:String},
     //Add image
     image: {type:String},
-    //Changed quantity need to update client side
     quantity: {
         store: {type:Number, min: 0, required:'{PATH} is required'},
         warehouse: {type:Number, min: 0, required:'{PATH} is required'}

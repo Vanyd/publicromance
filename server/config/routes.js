@@ -1,6 +1,7 @@
 var auth = require('./auth'),
     users = require('../controllers/users'),
     products = require('../controllers/products'),
+    categories = require('../controllers/categories'),
     reports = require('../controllers/reports'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
@@ -19,6 +20,15 @@ module.exports = function (app) {
 
     //create route to update the user
     app.put('/api/users', users.updateUser);
+
+    //route to get category list
+    app.get('/api/category', categories.getCategories);
+
+    //rotue to get indvidual product id page
+    app.post('/api/category', categories.createCategories);
+
+    //rotue to get indvidual product id page
+    app.get('/api/category/:id', categories.getCategoryById);
 
     //route to get stock list
     app.get('/api/stock', products.getProducts);

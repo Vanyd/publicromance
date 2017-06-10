@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 //Creating a Scheama for Product
 var categorySchema = mongoose.Schema({
-    name: []
+    name: {type:String, required:'{PATH} is required'}
 });
 
 //Create a model based on the above Schema
@@ -18,7 +18,11 @@ var Category = mongoose.model('Category', categorySchema);
 function createDefaultCategories() {
     Category.find({}).exec(function (err, collection) {
         if(collection.length === 0){
-            Category.create({subcategory: ["Army shirts","Check shirts","Aztec shirts","Denim shirts","Baja","Knitwear"]})
+            Category.create({name: "Army shirts"}),
+            Category.create({name: "Check shirts"}),
+            Category.create({name: "Aztec shirts"}),
+            Category.create({name: "Denim shirts"}),
+            Category.create({name: "Baja"})
             }
     })
 }

@@ -4,13 +4,15 @@ angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotificat
         var newProductData = {
             name: $scope.name,
             description: $scope.description,
-            //TODO Fix tags so it goes inot an array
-            tags: $scope.tags,
             category: $scope.category,
             isVintage: $scope.isVintage,
             isAccessory: $scope.isAccessory,
-            price: $scope.price,
-            quantity: $scope.quantity
+            retailprice: $scope.retailprice,
+            costprice: $scope.costprice,
+            quantity: {
+                warehouse: $scope.warehousequantity,
+                store: $scope.storequantity
+            }
         };
 
         //Pass in the new user data created from the signup form into a mvAuth function createUser
