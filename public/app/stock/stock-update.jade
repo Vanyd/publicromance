@@ -1,4 +1,5 @@
-//Adding new stock item
+//Stock-List => Stock Details => Stock Update
+//Form for adding in a new new stock item
 .container
     .well
         //giving the form a name to access it from Controller
@@ -16,7 +17,7 @@
                 .form-group
                     label.col-md-2.control-label(for="pc") Category
                     .col-md-10
-                        input.form-control(name="pc", type="text", required, ng-model="product.category")
+                        select.form-control(name="pc", required, ng-model="product.category", ng-options="x for x in categories")
                 .form-group
                     label.col-md-2.control-label(for="vin") Vintage
                     .col-md-1
@@ -25,13 +26,21 @@
                     .col-md-1
                         input.form-control(name="acc", type="checkbox", ng-model="product.isAccessory")
                 .form-group
-                    label.col-md-2.control-label(for="quan") Quantity
+                    label.col-md-2.control-label(for="storequan") Store Quantity
                     .col-md-10
-                        input.form-control(name="price", type="number", min="0", required, ng-model="product.quantity")
+                        input.form-control(name="storequan", type="number", min="0", required, ng-model="product.quantity.store")
                 .form-group
-                    label.col-md-2.control-label(for="cost") Price
+                    label.col-md-2.control-label(for="warequan") Warehouse Quantity
                     .col-md-10
-                        input.form-control(name="cost", type="text", min="0.01", step="0.01",  required, ng-model="product.price")
+                        input.form-control(name="warequan", type="number", min="0", required, ng-model="product.quantity.warehouse")
+                .form-group
+                    label.col-md-2.control-label(for="cost") Cost Price
+                    .col-md-10
+                        input.form-control(name="cost", type="text", min="0.01", step="0.01",  required, ng-model="product.costprice")
+                form-group
+                    label.col-md-2.control-label(for="retail") Retail Price
+                    .col-md-10
+                        input.form-control(name="retail", type="text", min="0.01", step="0.01",  required, ng-model="product.retailprice")
                 .form-group
                     .col-md-10.col-md-offset-2
                         .pull-right

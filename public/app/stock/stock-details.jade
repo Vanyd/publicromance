@@ -1,4 +1,8 @@
-//Indvidual Stock Item list, Controler is mvStockDetailsCtrl
+//Stock-List => Stock Details
+//Details list page for the individual item.
+//Should contain all information of the Product item on this page
+//Should be aple to Edit the item, delete the item and go back to the Stock List page
+//Controller is mvStockDetailsCtrl
 .container.top-padding-med
     h1 {{product.name}}
     .row
@@ -10,7 +14,7 @@
 
         .col-md-6
             .panel.panel-primary
-                .panel-heading Tags
+                .panel-heading Picture
                 .panel-body
                     div(ng-repeat="tag in product.tags") {{tag}}
     .form-group

@@ -9,40 +9,55 @@
     //setting sortOrder to default to first sortOption
     $scope.sortOrder = $scope.sortOptions[0].value;
 
-    $scope.addQuantity = function(productData) {
+    $scope.addStoreQuantity = function(productData) {
 
-        productData.quantity ++;
+        productData.quantity.store ++;
 
         mvAuth.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
         }, function (reason) {
             mvNotification.error(reason);
-            productData.quantity --;
+            productData.quantity.store --;
         });
-
-
-
     };
 
 
-    $scope.removeQuantity = function(productData) {
+    $scope.removeStoreQuantity = function(productData) {
 
-       // alert(productID);
-
-        productData.quantity --;
-
-
+        // Remove quantity
+        productData.quantity.store --;
 
         mvAuth.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
         }, function (reason) {
             mvNotification.error(reason);
-            productData.quantity ++;
+            productData.quantity.store ++;
         });
+    };
+
+    $scope.addWarehouseQuantity = function(productData) {
+
+        productData.quantity.warehouse ++;
+
+        mvAuth.updateProduct(productData).then(function () {
+            mvNotification.notify(productData.name + ' has been updated');
+        }, function (reason) {
+            mvNotification.error(reason);
+            productData.quantity.warehouse --;
+        });
+    };
 
 
+    $scope.removeWarehouseQuantity = function(productData) {
 
+        // Remove quantity
+        productData.quantity.warehouse --;
 
+        mvAuth.updateProduct(productData).then(function () {
+            mvNotification.notify(productData.name + ' has been updated');
+        }, function (reason) {
+            mvNotification.error(reason);
+            productData.quantity.warehouse ++;
+        });
     }
-
 });

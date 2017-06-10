@@ -71,7 +71,7 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser,
                 dfd.reject(response.data.reason);
             });
             return dfd.promise;
-        },
+        },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
         //update the CurrentUser settings
         updateProduct: function (updateProductData){
