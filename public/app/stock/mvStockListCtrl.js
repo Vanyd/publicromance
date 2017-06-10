@@ -1,4 +1,4 @@
- angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, mvAuth, $location, mvNotification) {
+ angular.module('app').controller('mvStockListCtrl',function ($scope, mvProduct, mvStockUpdate, $location, mvNotification) {
    //Get list of Stock items to use for data table from the mvCachedProduct Resouce
     $scope.products = mvProduct.query();
 
@@ -13,7 +13,7 @@
 
         productData.quantity.store ++;
 
-        mvAuth.updateProduct(productData).then(function () {
+        mvStockUpdate.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
         }, function (reason) {
             mvNotification.error(reason);
@@ -27,7 +27,7 @@
         // Remove quantity
         productData.quantity.store --;
 
-        mvAuth.updateProduct(productData).then(function () {
+        mvStockUpdate.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
         }, function (reason) {
             mvNotification.error(reason);
@@ -39,7 +39,7 @@
 
         productData.quantity.warehouse ++;
 
-        mvAuth.updateProduct(productData).then(function () {
+        mvStockUpdate.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
         }, function (reason) {
             mvNotification.error(reason);
@@ -53,7 +53,7 @@
         // Remove quantity
         productData.quantity.warehouse --;
 
-        mvAuth.updateProduct(productData).then(function () {
+        mvStockUpdate.updateProduct(productData).then(function () {
             mvNotification.notify(productData.name + ' has been updated');
         }, function (reason) {
             mvNotification.error(reason);

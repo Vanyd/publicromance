@@ -1,4 +1,4 @@
-angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotification, mvAuth, $location) {
+angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotification, mvStockUpdate, $location) {
 
     $scope.addstock = function() {
         var newProductData = {
@@ -16,7 +16,7 @@ angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotificat
         };
 
         //Pass in the new user data created from the signup form into a mvAuth function createUser
-        mvAuth.createProduct(newProductData).then(function() {
+        mvStockUpdate.createProduct(newProductData).then(function() {
             mvNotification.notify('Stock Item Created');
             $location.path('/stock');
         }, function(reason){
