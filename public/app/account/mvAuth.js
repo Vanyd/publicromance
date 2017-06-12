@@ -1,6 +1,6 @@
 //Auth controller for the user, login/create/logout/auth role
 
-angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser, mvProduct) {
+angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser) {
     return {
 
         //authenticate user against the inputted username and password.

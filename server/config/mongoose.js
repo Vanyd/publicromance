@@ -19,8 +19,5 @@ module.exports = function(config) {
 
     categoryModel.createDefaultCategories();
 
-
-    reportModel.createDefaultReport();
-
 };
 

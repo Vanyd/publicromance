@@ -1,22 +1,37 @@
 //Controler for the Profile page.
-angular.module('app').controller('mvStockUpdateCtrl', function ($scope, mvStockUpdate, mvProduct, mvNotification, $routeParams, $location) {
+angular.module('app').controller('mvStockUpdateCtrl', function ($scope, mvStockUpdate, mvProduct, mvCategory, mvNotification, $routeParams, $location) {
 
 
 
-
-    // TODO fix categories to display
-    // var cLen, i;
+    //TODO need to loop through array of objects to get name.
     // $scope.category = mvCategory.query();
     //
     // $scope.categories = [];
     //
-    // cLen = category.name.length;
-    // for (i = 0; i < cLen; i++) {
-    //     $scope.categories.push(category.name[i]);
+    // for (var key in $scope.category)
+    // {
+    //     if ($scope.category.hasOwnProperty(key))
+    //     {
+    //         // here you have access to each object in category
+    //         console.log($scope.category[key])
+    //
+    //
+    //     }
     // }
 
+   //  var cLen, i;
+   //  $scope.category = mvCategory.query();
+   //
+   //  cLen = category.name.length;
+   //  for (i = 0; i < cLen; i++) {
+   //      $scope.categories.push(category.name[i]);
+   //  }
 
-    $scope.categories = ["Army Shirts", "Dress", "Pants", "Shoes", "Sweater", "Skirt"];
+
+   // $scope.categories = ["Army Shirts", "Dress", "Pants", "Shoes", "Sweater", "Skirt"];
+
+
+    $scope.categories = mvCategory;
 
     $scope.product = mvProduct.get({_id: $routeParams.id});
 
@@ -30,6 +45,18 @@ angular.module('app').controller('mvStockUpdateCtrl', function ($scope, mvStockU
             mvNotification.error(reason);
         });
 
+
+    };
+
+    $scope.addCategory = function () {
+
+         var newCategory = prompt("Enter a value");
+         mvCategory.push(newCategory);
+
+    };
+
+    $scope.test = function () {
+        console.log($scope.category);
 
     }
 

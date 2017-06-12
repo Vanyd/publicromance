@@ -15,8 +15,9 @@
                         input.form-control(name="description", type="text", placeholder="Description", required, ng-model="description")
                 .form-group
                     label.col-md-2.control-label(for="category") Category
-                    .col-md-10
-                        input.form-control(name="category", type="text", placeholder="Category", required, ng-model="category")
+                    .col-md-8
+                        select.form-control(name="pc", required, ng-model="category", ng-options="x for x in categories")
+                    button(ng-click="addCategory()") Add Category
                 .form-group
                     label.col-md-2.control-label(for="isVintage") Vintage
                     .col-md-1

@@ -23,8 +23,6 @@
                 th Category
                 th Store Quantity
                 th Warehouse Quantity
-                th Update Store Quantity
-                th Update Warehouse Quantity
                 th Edit Item
         tbody
             //Row in the table repeat from products, add filter and order
@@ -34,14 +32,12 @@
                     a(href="/stock/item/{{product._id}}") {{product.name}}
                 td {{product.category}}
                 td {{product.quantity.store}}
-                td {{product.quantity.warehouse}}
-                //TODO link these buttons to add / remove quanity
-                td
                     button(ng-click="addStoreQuantity(product)") +
                     button(ng-click="removeStoreQuantity(product)") -
-                td
+                td {{product.quantity.warehouse}}
                     button(ng-click="addWarehouseQuantity(product)") +
                     button(ng-click="removeWarehouseQuantity(product)") -
+                //TODO link these buttons to add / remove quanity
                 td
                     a(href="/stock/update/{{product._id}}")
                         span(title="Edit Item", class='glyphicon glyphicon-edit')

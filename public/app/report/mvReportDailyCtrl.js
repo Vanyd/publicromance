@@ -1,8 +1,13 @@
 
-angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport) {
+angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport, mvProduct) {
 
-    $scope.report = mvReport;
+    // $scope.report = mvReport;
 
+    $scope.report = mvProduct.query();
+
+    
+
+    console.log($scope.report);
 
     //Adds all name objects into one array
     $scope.nameArray =  $scope.report.map(function(obj) {
@@ -15,18 +20,18 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
 
 
     //Filters Objects from last 24 hours and places them in a array
-    $scope.dateArray = $scope.report.filter(function (obj) {
-
-        var currentDate = new Date();
-        var ONE_DAY = 86400000 * 4;
-        var difference = currentDate.getTime()-ONE_DAY;
-
-        return obj.date.getTime() >= difference ;
-
-    });
+    // $scope.dateArray = $scope.report.filter(function (obj) {
+    //
+    //     var currentDate = new Date();
+    //     var ONE_DAY = 86400000 * 4;
+    //     var difference = currentDate.getTime()-ONE_DAY;
+    //
+    //     return obj.date.getTime() >= difference ;
+    //
+    // });
 
     //filters quantity and places them in data array
-    $scope.data = $scope.dateArray.map(function (obj) {
+    $scope.data = $scope.report.quantity.store.map(function (obj) {
         return obj.quantity;
     });
 

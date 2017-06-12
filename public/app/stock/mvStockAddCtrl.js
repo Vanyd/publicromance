@@ -1,4 +1,7 @@
-angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotification, mvStockUpdate, $location) {
+angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotification, mvCategory, mvStockUpdate, $location) {
+
+
+    $scope.categories = mvCategory;
 
     $scope.addstock = function() {
         var newProductData = {
@@ -24,6 +27,13 @@ angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotificat
         })
 
 
-    }
+    },
+
+    $scope.addCategory = function () {
+
+        var newCategory = prompt("Enter a value");
+        mvCategory.push(newCategory);
+
+    };
 
 });

@@ -3,6 +3,13 @@
 angular.module('app').factory('mvStockUpdate', function ($http, mvIdentity, $q, mvProduct) {
     return {
 
+        categoryTest: function (newCategory) {
+            var categories = ["Army Shirts", "Dress", "Pants", "Shoes", "Sweater", "Skirt"];
+
+            return categories;
+
+        },
+
         //create a new Product. resource object.
         createProduct: function(newProductData){
             var newProduct = new mvProduct(newProductData);

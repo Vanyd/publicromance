@@ -21,6 +21,29 @@ require('./server/config/passport')();
 //Routing
 require('./server/config/routes')(app);
 
+
+var schedule = require('node-schedule');
+
+
+
+var productBackup = schedule.scheduleJob('01 06 * * *', function(){
+
+    //TODO Add product backup for reports
+    // Create new document in Reports collection
+    // Push current productss into new document
+
+
+
+
+
+
+    console.log("This runs at 06:01");
+
+
+});
+
+
+
 //Seting up our server to listen on a particualr port.
 app.listen(config.port);
 console.log('listening on port ' + config.port + '....');
