@@ -3,11 +3,70 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
 
     // $scope.report = mvReport;
 
-    $scope.report = mvProduct.query();
+    //TODO loop through over array of objects to get names and quantity.
+
+    $scope.report = mvProduct.query(function() {
+
+        for(var key in $scope.report){
+            var obj = $scope.report[key];
+            for(var prop in obj){
+                if(obj.hasOwnProperty(prop)){
+                    console.log(prop + " = " + obj[prop]);
+                }
+            }
+
+        }
+
+    });
+
+    $scope.nameArray =  $scope.report.map(function(obj) {
+        return obj.name;
+    });
+    //filters to unique names and places them as a label in the chart
+    $scope.labels = $scope.nameArray.filter(function(item, pos, self) {
+        return self.indexOf(item) == pos;
+    });
+
+
+
+    //
+    // for(var key in $scope.report){
+    //     var obj = $scope.report[key];
+    //     for(var prop in obj){
+    //         if(obj.hasOwnProperty(prop)){
+    //             console.log(prop + " = " + obj[prop]);
+    //         }
+    //     }
+    //
+    // }
+
+
+   // var responseObject = JSON.parse($scope.report);
+
+
+    // $scope.responseObject = myFunction($scope.report){
+    //     var parsedJSON = JSON.parse($scope.report);
+    //     for (var i=0;i<parsedJSON.length;i++) {
+    //         console.log(parsedJSON[i].name);
+    //     }
+    // }
+
+
+
+   // var newContent = '';
+    ///for (var i = 0; i< responseObject)
+
+
 
     
 
     console.log($scope.report);
+
+    // $scope.report.map(function(product) {
+    //     console.log(product.name);
+    // });
+
+        //console.log(responseObject);
 
     //Adds all name objects into one array
     $scope.nameArray =  $scope.report.map(function(obj) {
@@ -17,6 +76,10 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
     $scope.labels = $scope.nameArray.filter(function(item, pos, self) {
         return self.indexOf(item) == pos;
     });
+
+    console.log($scope.nameArray);
+    console.log($scope.labels);
+
 
 
     //Filters Objects from last 24 hours and places them in a array
