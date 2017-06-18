@@ -31,11 +31,17 @@
                     //changing title to a link of the product id it is displaying
                     a(href="/stock/item/{{product._id}}") {{product.name}}
                 td {{product.category}}
-                td {{product.quantity.store}}
+                td
                     button(ng-click="addStoreQuantity(product)") +
+                    | &nbsp &nbsp;
+                    | {{product.quantity.store}}
+                    | &nbsp &nbsp;
                     button(ng-click="removeStoreQuantity(product)") -
-                td {{product.quantity.warehouse}}
+                td
                     button(ng-click="addWarehouseQuantity(product)") +
+                    | &nbsp &nbsp;
+                    | {{product.quantity.warehouse}}
+                    | &nbsp &nbsp;
                     button(ng-click="removeWarehouseQuantity(product)") -
                 //TODO link these buttons to add / remove quanity
                 td
