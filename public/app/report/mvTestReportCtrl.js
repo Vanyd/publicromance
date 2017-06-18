@@ -1,5 +1,5 @@
 
-angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport, mvProduct) {
+angular.module('app').controller('mvTestReportCtrl', function ($scope, mvReport, mvProduct) {
 
     $scope.report = mvReport;
 
@@ -41,7 +41,7 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
     // }
 
 
-   // var responseObject = JSON.parse($scope.report);
+    // var responseObject = JSON.parse($scope.report);
 
 
     // $scope.responseObject = myFunction($scope.report){
@@ -53,12 +53,12 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
 
 
 
-   // var newContent = '';
+    // var newContent = '';
     ///for (var i = 0; i< responseObject)
 
 
 
-    
+
 
     console.log($scope.report);
 
@@ -66,7 +66,7 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
     //     console.log(product.name);
     // });
 
-        //console.log(responseObject);
+    //console.log(responseObject);
 
     //Adds all name objects into one array.
     $scope.nameArray =  $scope.report.map(function(obj) {
@@ -97,6 +97,8 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
     $scope.data = $scope.dateArray.map(function (obj) {
         return obj.quantity;
     });
+
+    console.log($scope.data);
 
     $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
     $scope.options = {

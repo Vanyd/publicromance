@@ -1,0 +1,12 @@
+.container
+    .well.report
+        p This is the Test Report
+        canvas(id="bar", class="chart chart-bar", chart-data="data", chart-labels="labels", chart-series="series")
+        br
+        br
+        canvas(id="line",class="chart chart-line", chart-data="data", chart-labels="labels", chart-options="options", chart-dataset-override="datasetOverride", chart-click="onClick")
+        br
+        br
+        canvas(id="base", class="chart-horizontal-bar", chart-data="data", chart-labels="labels")
+
+

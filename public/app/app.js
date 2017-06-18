@@ -90,6 +90,11 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: '/partials/report/monthly-report',
             controller:'mvReportMonthlyCtrl'
         })
+        //create route for adding stock items
+        .when("/report/test", {
+            templateUrl: '/partials/report/test-report',
+            controller:'mvTestReportCtrl'
+        })
         //create route for signup page
         .when("/signup", {
             templateUrl: '/partials/account/signup',

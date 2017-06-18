@@ -1,13 +1,21 @@
 //Auth controller for the user, login/create/logout/auth role
 
-angular.module('app').factory('mvStockUpdate', function ($http, mvIdentity, $q, mvProduct) {
+angular.module('app').factory('mvStockUpdate', function ($http, mvIdentity, $q, mvProduct, mvCategory) {
     return {
 
-        categoryTest: function (newCategory) {
-            var categories = ["Army Shirts", "Dress", "Pants", "Shoes", "Sweater", "Skirt"];
 
-            return categories;
+        //create a new Product. resource object.
+        createCategory: function(newCategoryData){
+            var newProduct = new mvCategory(newCategoryData);
+            var dfd = $q.defer();
 
+            //save the new user data against the current user
+            newProduct.$save().then(function() {
+                dfd.resolve();
+            }, function(response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
         },
 
         //create a new Product. resource object.

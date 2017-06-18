@@ -1,7 +1,7 @@
 angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotification, mvCategory, mvStockUpdate, $location) {
 
 
-    $scope.categories = mvCategory;
+    $scope.categories = mvCategory.query();
 
     $scope.addstock = function() {
         var newProductData = {
@@ -27,12 +27,23 @@ angular.module('app').controller('mvStockAddCtrl', function ($scope, mvNotificat
         })
 
 
-    },
+    };
 
     $scope.addCategory = function () {
 
-        var newCategory = prompt("Enter a value");
-        mvCategory.push(newCategory);
+        var newValue = prompt("Enter a value");
+
+        var newCategoryData ={
+            name: newValue
+        };
+
+        mvStockUpdate.createCategory(newCategoryData).then(function() {
+            mvNotification.notify('New Category Added');
+        }, function(reason){
+            mvNotification.error(reason);
+        });
+
+        console.log(newCategoryData)
 
     };
 

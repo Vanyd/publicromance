@@ -31,7 +31,7 @@ angular.module('app').controller('mvStockUpdateCtrl', function ($scope, mvStockU
    // $scope.categories = ["Army Shirts", "Dress", "Pants", "Shoes", "Sweater", "Skirt"];
 
 
-    $scope.categories = mvCategory;
+    $scope.categories = mvCategory.query();
 
     $scope.product = mvProduct.get({_id: $routeParams.id});
 
@@ -50,14 +50,22 @@ angular.module('app').controller('mvStockUpdateCtrl', function ($scope, mvStockU
 
     $scope.addCategory = function () {
 
-         var newCategory = prompt("Enter a value");
-         mvCategory.push(newCategory);
+        var newValue = prompt("Enter a value");
+
+        var newCategoryData ={
+            name: newValue
+        };
+
+        mvStockUpdate.createCategory(newCategoryData).then(function() {
+            mvNotification.notify('New Category Added');
+        }, function(reason){
+            mvNotification.error(reason);
+        });
+
 
     };
 
-    $scope.test = function () {
-        console.log($scope.category);
 
-    }
+
 
 });

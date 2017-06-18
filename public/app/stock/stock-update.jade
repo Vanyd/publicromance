@@ -17,7 +17,7 @@
                 .form-group
                     label.col-md-2.control-label(for="pc") Category
                     .col-md-8
-                        select.form-control(name="pc", required, ng-model="product.category", ng-options="x for x in categories")
+                        select.form-control(name="pc", required, ng-model="product.category", ng-options="category.name as category.name for category in categories")
                     button(ng-click="addCategory()") Add Category
                 .form-group
                     label.col-md-2.control-label(for="vin") Vintage
