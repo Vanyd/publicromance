@@ -25,14 +25,19 @@
     $scope.removeStoreQuantity = function(productData) {
 
         // Remove quantity
-        productData.quantity.store --;
 
-        mvStockUpdate.updateProduct(productData).then(function () {
-            mvNotification.notify(productData.name + ' has been updated');
-        }, function (reason) {
-            mvNotification.error(reason);
-            productData.quantity.store ++;
-        });
+        if (productData.quantity.store == 0)
+            mvNotification.error(productData.name + ' is currently at zero');
+        else {
+            productData.quantity.store --;
+
+            mvStockUpdate.updateProduct(productData).then(function () {
+                mvNotification.notify(productData.name + ' has been updated');
+            }, function (reason) {
+                mvNotification.error(reason);
+                productData.quantity.store ++;
+            });
+        }
     };
 
     $scope.addWarehouseQuantity = function(productData) {
@@ -51,13 +56,17 @@
     $scope.removeWarehouseQuantity = function(productData) {
 
         // Remove quantity
-        productData.quantity.warehouse --;
+        if (productData.quantity.warehouse == 0)
+            mvNotification.error(productData.name + ' is currently at zero');
+        else {
+            productData.quantity.warehouse--;
 
-        mvStockUpdate.updateProduct(productData).then(function () {
-            mvNotification.notify(productData.name + ' has been updated');
-        }, function (reason) {
-            mvNotification.error(reason);
-            productData.quantity.warehouse ++;
-        });
+            mvStockUpdate.updateProduct(productData).then(function () {
+                mvNotification.notify(productData.name + ' has been updated');
+            }, function (reason) {
+                mvNotification.error(reason);
+                productData.quantity.warehouse++;
+            });
+        }
     }
 });
