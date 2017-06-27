@@ -4,7 +4,6 @@ angular.module('app').factory('mvReport', function () {
 
     //Similar to the mvUser we use the resource to grab the stock items
     var ReportResource = [
-        { name : "Black Plaid Keyhole Front Bell Sleeve Dress", quantity : 4, date : new Date('2017-01-14') },
         { name : "Adidas Navy Bomber Jacket", quantity : 24, date : new Date('2017-02-14') },
         { name : "Black Ripped Drawstring Sweatpants", quantity : 29, date : new Date('2017-02-23') },
         { name : "Turtleneck Raglan Sleeve Loose Sweater", quantity : 12, date : new Date('2017-02-24') },

@@ -38,13 +38,14 @@
                     label.col-md-2.control-label(for="cost") Cost Price
                     .col-md-10
                         input.form-control(name="cost", type="text", min="0.01", step="0.01",  required, ng-model="product.costprice")
-                form-group
+                .form-group
                     label.col-md-2.control-label(for="retail") Retail Price
                     .col-md-10
                         input.form-control(name="retail", type="text", min="0.01", step="0.01",  required, ng-model="product.retailprice")
                 .form-group
                     .col-md-10.col-md-offset-2
                         .pull-right
+                            br
                             button.btn.btn-primary(ng-click="update()") Submit
                             | &nbsp &nbsp;
                             a.btn(href="/stock/item/{{product._id}}") Cancel

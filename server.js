@@ -1,7 +1,14 @@
-//importing different modules
+/*
+Author: Colum Coughlan
+Description:
+Date:
+ */
+
+
+//importing different modules to allow the server to run
 var express = require('express');
 
-//environment variable, to determine if you are in production or development. Setting development as the default if it hasnt been already set
+//environment variable, to determine if you are in production or development. Server Enviorment needs to be set
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 //Creating express application
@@ -26,18 +33,21 @@ var schedule = require('node-schedule');
 
 
 
-var productBackup = schedule.scheduleJob('01 06 * * *', function(){
+var productBackup = schedule.scheduleJob('01 01 * * *', function(){
 
     //TODO Add product backup for reports
     // Create new document in Reports collection
     // Push current productss into new document
 
-
-
-
-
-
-    console.log("This runs at 06:01");
+    // Report.create({ date: new Date("2017-01-16"), product: [Product]});
+    //
+    //
+    // // Loop through all Product documents pushing into a new array under report.product[]
+    //
+    //
+    //
+    //
+    // console.log("Daily Report Updated");
 
 
 });

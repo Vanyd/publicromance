@@ -22,8 +22,9 @@ angular.module('app').controller('mvReportWeeklyCtrl', function ($scope, mvRepor
         var ONE_DAY = 86400000 * 7;
         var difference = currentDate.getTime()-ONE_DAY;
 
-        return obj.date.getTime() >= difference ;
+        // return obj.date.getTime() >= difference ;
 
+        return obj.date;
     });
 
     //filters quantity and places them in data array

@@ -93,10 +93,21 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
 
     });
 
+    console.log($scope.dateArray);
+
     //filters quantity and places them in data array
     $scope.data = $scope.dateArray.map(function (obj) {
         return obj.quantity;
     });
+
+    // //filters quantity and places them in data array
+    // $scope.dataWarehouse = $scope.dateArray.map(function (obj) {
+    //     return obj.quantity.warehouse;
+    // });
+
+  //  $scope.data = [[$scope.dataStore],[$scope.dataWarehouse]];
+
+    console.log($scope.data);
 
     $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
     $scope.options = {
@@ -117,6 +128,8 @@ angular.module('app').controller('mvReportDailyCtrl', function ($scope, mvReport
             ]
         }
     };
+
+    $scope.series = ['Store Quantity', 'Warehouse Quantity'];
 
     $scope.test = function() {
 

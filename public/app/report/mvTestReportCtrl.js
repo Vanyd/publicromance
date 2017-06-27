@@ -7,17 +7,24 @@ angular.module('app').controller('mvTestReportCtrl', function ($scope, mvReport,
 
     $scope.producttest = mvProduct.query(function() {
 
-        for(var key in $scope.report){
-            var obj = $scope.report[key];
+        for(var key in $scope.producttest){
+            var obj = $scope.producttest[key];
             for(var prop in obj){
                 if(obj.hasOwnProperty(prop)){
                     console.log(prop + " = " + obj[prop]);
+                    console.log("test")
                 }
             }
 
         }
 
     });
+
+
+
+    function checkDate(date){
+        return
+    }
 
     $scope.nameArray =  $scope.report.map(function(obj) {
         return obj.name;
@@ -57,8 +64,11 @@ angular.module('app').controller('mvTestReportCtrl', function ($scope, mvReport,
     ///for (var i = 0; i< responseObject)
 
 
+    $scope.nameTest = $scope.producttest.map(function (obj) {
+        return obj.name;
+    });
 
-
+    console.log($scope.nameTest);
 
     console.log($scope.report);
 
